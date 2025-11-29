@@ -1,267 +1,134 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyMaster</title>
-    <!-- Chargement de Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration de la police Inter -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Style personnalisé pour la zone de code */
-        pre {
-            @apply bg-gray-900 text-white p-4 rounded-lg shadow-inner overflow-x-auto text-sm;
-        }
-        code {
-            @apply bg-gray-200 text-gray-800 px-1 rounded;
-        }
-        .reference {
-            @apply bg-green-100 border-l-4 border-green-600 p-4 my-4 rounded-r-lg;
-        }
-        .note {
-            @apply bg-yellow-100 border-l-4 border-yellow-600 p-4 my-4 rounded-r-lg;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyMaster - Accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-bg {
+            background-image: url('https://placehold.co/1200x600/e0f2fe/0369a1/png?text=Python+Code+Background'); /* Placeholder pour une image de fond abstraite/code */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            isolation: isolate;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.95); /* Légère opacité blanche */
+            z-index: -1;
+        }
+        .card-shadow { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+        .nav-link { transition: color 0.2s; }
+        .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
+    </style>
 </head>
-<body class="bg-gray-50 p-4 sm:p-8">
+<body class="bg-slate-50 text-slate-800">
 
-    <div class="container mx-auto max-w-4xl bg-white shadow-2xl rounded-xl">
+    <!-- Navigation Commune -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-python text-3xl text-blue-600"></i>
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">PyMaster</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <!-- Liens de navigation mis à jour -->
+                    <a href="index.html" class="text-blue-600 font-medium active nav-link border-blue-600">Accueil</a>
+                    <a href="tutoriel_bases.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Tutoriel Python</a>
+                    <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <!-- En-tête -->
-        <header class="bg-green-700 text-white p-8 rounded-t-xl text-center">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">🐍 Tutoriel Débutant : Coder en Python</h1>
-            <p class="mt-2 text-lg font-light">De la base à votre premier assistant IA avec Gemini.</p>
-        </header>
+    <!-- Section Héros/Accueil -->
+    <header class="hero-bg py-24 sm:py-32">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
+                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-700">Maîtriser Python,</span>
+                <span class="block mt-2">Étape par Étape.</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Apprenez les bases du langage de programmation le plus populaire au monde grâce à un tutoriel simple, puis passez à la pratique avec un assistant IA.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="tutoriel_bases.html" class="px-8 py-3 bg-blue-600 text-white font-bold rounded-full text-lg shadow-xl hover:bg-blue-700 transition transform hover:scale-105">
+                    <i class="fa-solid fa-book-open-reader mr-2"></i> Commencer le Tutoriel
+                </a>
+                <a href="atelier_ia.html" class="px-8 py-3 bg-white text-purple-600 border-2 border-purple-600 font-bold rounded-full text-lg shadow-xl hover:bg-purple-50 transition transform hover:scale-105">
+                    <i class="fa-solid fa-robot mr-2"></i> Passer à l'Atelier IA
+                </a>
+            </div>
+        </div>
+    </header>
 
-        <main class="p-6 sm:p-10">
+    <!-- Section Caractéristiques -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Ce que vous allez apprendre</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Caractéristique 1 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Les Bases Fondamentales</h3>
+                    <p class="text-slate-600">Découvrez les variables, les entrées utilisateur et les structures de contrôle (<code class="cmd">if/else</code>) de manière simple et didactique.</p>
+                </div>
+                
+                <!-- Caractéristique 2 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-purple-600 mb-4">
+                        <i class="fa-solid fa-gamepad text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Coder votre Premier Projet</h3>
+                    <p class="text-slate-600">Mettez la main à la pâte en développant un jeu complet de devinettes en utilisant les concepts fraîchement acquis.</p>
+                </div>
 
-            <!-- Section 1: Préparation -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">1. Préparer votre environnement</h2>
+                <!-- Caractéristique 3 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-green-600 mb-4">
+                        <i class="fa-solid fa-magic text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Assistance Code par IA</h3>
+                    <p class="text-slate-600">Utilisez notre atelier IA intégré (Gemini) pour corriger, expliquer ou générer du code Python quand vous êtes bloqué.</p>
+                </div>
 
-                <div class="step mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.1 Installation de Python</h3>
-                    <p class="text-gray-600">Rendez-vous sur le site officiel de Python pour le téléchargement. C'est la première étape cruciale.</p>
-                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
-                        <li>**Important** : Sous Windows, cochez toujours **"Add Python to PATH"**.</li>
-                        <li>Vérifiez l'installation dans votre terminal avec : <code>python --version</code></li>
-                    </ul>
-                    <div class="reference">
-                        <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
-                        <p>Consultez le **Chapitre 1** de **"Python pour les Nuls, 3e éd."** pour un guide d'installation détaillé.</p>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Références et Crédits -->
+    <section class="py-16 bg-slate-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Basé sur des ouvrages de référence</h2>
+            <p class="text-slate-600 mb-8">
+                Ce tutoriel a été conçu en s'appuyant sur les méthodes pédagogiques et les projets des livres <span class="font-semibold">"Programmer en s'amusant avec Python pour les Nuls"</span> et <span class="font-semibold">"Python pour les Nuls"</span>.
+            </p>
+            <div class="flex justify-center space-x-6 text-2xl text-slate-500">
+                <i class="fa-solid fa-book-reader hover:text-orange-500 transition"></i>
+                <i class="fa-brands fa-python hover:text-blue-500 transition"></i>
+                <i class="fa-solid fa-code hover:text-slate-700 transition"></i>
+            </div>
+        </div>
+    </section>
 
-                <div class="step">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.2 "Hello World!"</h3>
-                    <p class="text-gray-600">Votre premier programme. Créez un fichier <code>hello.py</code> et exécutez-le.</p>
-                    <pre><code class="language-python">print("Bonjour le monde de Python!")</code></pre>
-                </div>
-            </section>
-
-            <!-- Section 2: Bases du Langage -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">2. Les Fondamentaux (Variables et Types)</h2>
-                <p class="text-gray-600 mb-4">Les variables sont des étiquettes pour stocker des données (nombres, textes, etc.).</p>
-
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">2.1 Types de Données Essentiels</h3>
-                <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
-                    <li><code>str</code> (Chaîne de caractères) : <code>"Texte"</code></li>
-                    <li><code>int</code> (Entier) : <code>42</code></li>
-                    <li><code>float</code> (Nombre décimal) : <code>3.14</code></li>
-                    <li><code>bool</code> (Booléen) : <code>True</code> ou <code>False</code></li>
-                </ul>
-
-                <h3 class="text-xl font-semibold text-gray-800 mt-4 mb-2">2.2 Exemple de Déclaration</h3>
-                <pre><code class="language-python"># Déclaration des variables
-nom = "Julie"
-annee = 2025
-temperature = 18.5
-est_ete = False
-
-# Afficher avec une f-string (formatage de chaîne)
-print(f"{nom} est l'année {annee}. Fait-il chaud ? {est_ete}")</code></pre>
-                <div class="reference">
-                    <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
-                    <p>Pour maîtriser les variables et les types de données, consultez le **Chapitre 4** de **"Python pour les Nuls, 3e éd."**.</p>
-                </div>
-            </section>
-
-            <!-- Section 3: Assistant IA Gemini -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">3. Créer un Assistant IA avec Gemini</h2>
-                <p class="text-gray-600 mb-4">Nous allons utiliser l'API Gemini pour obtenir des suggestions de projets personnalisés.</p>
-                
-
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">3.1 Le Code de l'Assistant (HTML/JS)</h3>
-                <div class="note">
-                    **Attention :** Le code ci-dessous est en **JavaScript** et doit être exécuté dans le navigateur. Il fait un appel à l'API Gemini pour générer du texte.
-                </div>
-
-                <div id="assistant-ui" class="bg-gray-100 p-6 rounded-lg shadow-lg">
-                    <h4 class="text-2xl font-semibold text-blue-800 mb-4">Assistant de Projet Python (Propulsé par Gemini)</h4>
-                    
-                    <label for="interest" class="block text-gray-700 font-medium mb-1">Votre niveau et vos intérêts (Ex: Débutant, jeux vidéo)</label>
-                    <input type="text" id="interest" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" placeholder="Entrez votre niveau et vos intérêts ici...">
-                    
-                    <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
-                        Générer une idée de projet
-                    </button>
-
-                    <div id="loading" class="mt-4 hidden text-center">
-                        <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status">
-                            <span class="sr-only">Chargement...</span>
-                        </div>
-                        <p class="text-blue-600 mt-2">L'IA de Gemini réfléchit à votre projet...</p>
-                    </div>
-
-                    <div id="result" class="mt-6 p-4 bg-white border border-blue-200 rounded-lg shadow-inner hidden">
-                        <h5 class="text-lg font-bold text-blue-700 mb-2">Suggestion de Projet :</h5>
-                        <p id="gemini-output" class="whitespace-pre-wrap text-gray-700"></p>
-                    </div>
-
-                    <div id="error-message" class="mt-6 p-4 bg-red-100 border border-red-500 text-red-700 rounded-lg shadow-inner hidden">
-                        <p class="font-bold">Erreur :</p>
-                        <p id="error-text"></p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Pied de page -->
-        <footer class="bg-gray-800 text-white p-6 text-center rounded-b-xl">
-            <h3 class="text-xl font-semibold mb-2">4. Prochaines Étapes Essentielles</h3>
-            <p class="text-sm">Pour passer au niveau supérieur :</p>
-            <ul class="list-none mt-2 space-y-1 text-gray-300">
-                <li>Maîtrisez les **Conditions** (<code>if/else</code>) et les **Boucles** (<code>for/while</code>).
-                    <div class="reference inline-block p-1 bg-gray-600 rounded-md ml-2">
-                        <span class="text-xs text-white">Voir **Semaine 2** de **"Programmer en s'amusant avec Python..."**</span>
-                    </div>
-                </li>
-                <li>Apprenez les **Fonctions** (<code>def</code>) pour organiser votre code.</li>
-            </ul>
-        </footer>
-    </div>
-
-    <!-- JavaScript pour l'Assistant IA -->
-    <script type="module">
-        // La clé API est intentionnellement laissée vide ici. 
-        // L'environnement Canvas fournira la clé au moment de l'exécution.
-        const apiKey = "AIzaSyCBdjXNJoFFUd9zFF_5GVJXvSTmLFjhkw4"; 
-        const model = 'gemini-2.5-flash-preview-09-2025';
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-
-        const interestInput = document.getElementById('interest');
-        const generateBtn = document.getElementById('generate-btn');
-        const loadingDiv = document.getElementById('loading');
-        const resultDiv = document.getElementById('result');
-        const geminiOutput = document.getElementById('gemini-output');
-        const errorDiv = document.getElementById('error-message');
-        const errorText = document.getElementById('error-text');
-
-        // Fonction pour gérer les erreurs et l'affichage
-        const displayError = (message) => {
-            errorText.textContent = message;
-            errorDiv.classList.remove('hidden');
-            loadingDiv.classList.add('hidden');
-            resultDiv.classList.add('hidden');
-        };
-
-        // Implémentation de la fonction d'attente (sleep)
-        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-        // Fonction principale pour l'appel à l'API
-        const generateProjectIdea = async () => {
-            const userQuery = interestInput.value.trim();
-            if (!userQuery) {
-                displayError("Veuillez entrer votre niveau et vos intérêts pour que l'IA puisse vous aider.");
-                return;
-            }
-
-            // Réinitialiser les affichages
-            resultDiv.classList.add('hidden');
-            errorDiv.classList.add('hidden');
-            loadingDiv.classList.remove('hidden');
-            generateBtn.disabled = true;
-
-            const systemPrompt = "Act as a world-class Python programming tutor. Your goal is to suggest a beginner-friendly, educational Python project based on the user's input, and provide the first concrete step to get started. Respond only in French.";
-
-            const userPrompt = `Je suis un débutant en programmation. Mon niveau et mes intérêts sont : "${userQuery}". Suggère-moi un projet Python adapté et donne-moi la première action concrète à faire (par exemple: 'Installer la librairie X' ou 'Définir les variables Y'). Mentionne si possible un Chapitre ou une Semaine d'un des deux livres fournis ("Python pour les Nuls, 3e éd." ou "Programmer en s'amusant avec Python pour les Nuls, 3e éd.") comme référence si le concept est abordé (ex: Pour ce projet, il vous faudra utiliser les boucles (voir Chapitre 5 de 'Python pour les Nuls, 3e éd.')).`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userPrompt }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                config: {
-                    temperature: 0.7
-                }
-            };
-            
-            let response;
-            const maxRetries = 3;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.ok) {
-                        break; // Succès, sortir de la boucle
-                    } else if (response.status === 429 && i < maxRetries - 1) {
-                        // Gérer le cas de throttling (trop de requêtes) avec backoff exponentiel
-                        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
-                        await sleep(delay);
-                        continue; // Tenter à nouveau
-                    } else {
-                        throw new Error(`Erreur HTTP: ${response.status} ${response.statusText}`);
-                    }
-                } catch (e) {
-                    if (i === maxRetries - 1) {
-                        displayError(`Impossible de contacter l'API après ${maxRetries} tentatives. Veuillez réessayer plus tard.`);
-                        console.error(e);
-                        generateBtn.disabled = false;
-                        return;
-                    }
-                }
-            }
-            
-            // Traiter la réponse
-            try {
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    const text = candidate.content.parts[0].text;
-                    geminiOutput.textContent = text;
-                    resultDiv.classList.remove('hidden');
-                } else {
-                    displayError("L'IA n'a pas pu générer de réponse. Le format de réponse est incorrect.");
-                    console.error("Réponse API inattendue:", result);
-                }
-            } catch (e) {
-                displayError("Erreur lors du traitement de la réponse de l'IA.");
-                console.error(e);
-            }
-
-            // Terminé
-            loadingDiv.classList.add('hidden');
-            generateBtn.disabled = false;
-        };
-
-        generateBtn.addEventListener('click', generateProjectIdea);
-        
-        // Permettre d'utiliser la touche Entrée dans le champ de saisie
-        interestInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                generateProjectIdea();
-            }
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-4">Tutoriel éducatif PyMaster - Votre partenaire de codage.</p>
+            <p class="text-xs opacity-60">Conçu pour être simple, complet et interactif.</p>
+        </div>
+    </footer>
 </body>
 </html>
