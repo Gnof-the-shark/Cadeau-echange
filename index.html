@@ -26,46 +26,11 @@
         .card-shadow { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
         .nav-link { transition: color 0.2s; }
         .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
-        
-        /* Style pour simuler le "vitrage" autour de la fenêtre d'authentification */
-        .backdrop-blur-custom {
-            backdrop-filter: blur(4px);
-            background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <div id="authModal" class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-custom">
-        <div class="bg-gray-800/95 text-white p-8 rounded-xl w-full max-w-sm shadow-2xl border border-gray-700/50 transition-all transform duration-300 scale-100" style="box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
-            <h2 class="text-2xl font-semibold text-blue-300 mb-6 border-b border-gray-700 pb-2">Se connecter</h2>
-
-            <form>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-400 mb-2">http://[::1]:1111</p>
-                </div>
-
-                <div class="mb-4">
-                    <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Nom d'utilisateur</label>
-                    <input type="text" id="username" name="username" class="w-full p-2.5 rounded-lg bg-gray-900 border border-blue-500/50 focus:border-blue-400 focus:ring focus:ring-blue-400/30 text-white outline-none" required>
-                </div>
-
-                <div class="mb-6">
-                    <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Mot de passe</label>
-                    <input type="password" id="password" name="password" class="w-full p-2.5 rounded-lg bg-gray-900 border border-blue-500/50 focus:border-blue-400 focus:ring focus:ring-blue-400/30 text-white outline-none" required>
-                </div>
-
-                <div class="flex justify-end space-x-3 mt-8">
-                    <button type="button" id="cancelAuth" class="px-6 py-2.5 rounded-lg font-bold text-white bg-blue-900/50 border border-blue-700/50 hover:bg-blue-900 transition-colors">
-                        Annuler
-                    </button>
-                    <button type="submit" class="px-6 py-2.5 rounded-lg font-bold text-blue-900 bg-blue-200 hover:bg-blue-300 transition-colors">
-                        Se connecter
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Navigation Commune -->
     <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -74,9 +39,9 @@
                     <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">PyMaster</span>
                 </div>
                 <div class="flex items-center space-x-6">
+                    <!-- Liens de navigation mis à jour -->
                     <a href="index.html" class="text-blue-600 font-medium active nav-link border-blue-600">Accueil</a>
                     <a href="tutoriel_bases.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Tutoriel Python</a>
-                    
                     <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
                     </a>
@@ -85,44 +50,85 @@
         </div>
     </nav>
 
-    <header class="hero-bg py-24 sm:py-32" style="filter: blur(4px);">
+    <!-- Section Héros/Accueil -->
+    <header class="hero-bg py-24 sm:py-32">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
+                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-700">Maîtriser Python,</span>
+                <span class="block mt-2">Étape par Étape.</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Apprenez les bases du langage de programmation le plus populaire au monde grâce à un tutoriel simple, puis passez à la pratique avec un assistant IA.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="tutoriel_bases.html" class="px-8 py-3 bg-blue-600 text-white font-bold rounded-full text-lg shadow-xl hover:bg-blue-700 transition transform hover:scale-105">
+                    <i class="fa-solid fa-book-open-reader mr-2"></i> Commencer le Tutoriel
+                </a>
+                <a href="atelier_ia.html" class="px-8 py-3 bg-white text-purple-600 border-2 border-purple-600 font-bold rounded-full text-lg shadow-xl hover:bg-purple-50 transition transform hover:scale-105">
+                    <i class="fa-solid fa-robot mr-2"></i> Passer à l'Atelier IA
+                </a>
             </div>
+        </div>
     </header>
 
-    <section class="py-20 bg-white" style="filter: blur(4px);">
-        </section>
+    <!-- Section Caractéristiques -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Ce que vous allez apprendre</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Caractéristique 1 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Les Bases Fondamentales</h3>
+                    <p class="text-slate-600">Découvrez les variables, les entrées utilisateur et les structures de contrôle (<code class="cmd">if/else</code>) de manière simple et didactique.</p>
+                </div>
+                
+                <!-- Caractéristique 2 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-purple-600 mb-4">
+                        <i class="fa-solid fa-gamepad text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Coder votre Premier Projet</h3>
+                    <p class="text-slate-600">Mettez la main à la pâte en développant un jeu complet de devinettes en utilisant les concepts fraîchement acquis.</p>
+                </div>
+
+                <!-- Caractéristique 3 -->
+                <div class="p-8 bg-slate-50 rounded-xl card-shadow border border-slate-100 transition transform hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-green-600 mb-4">
+                        <i class="fa-solid fa-magic text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Assistance Code par IA</h3>
+                    <p class="text-slate-600">Utilisez notre atelier IA intégré (Gemini) pour corriger, expliquer ou générer du code Python quand vous êtes bloqué.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
     
-    <section class="py-16 bg-slate-100" style="filter: blur(4px);">
-        </section>
+    <!-- Section Références et Crédits -->
+    <section class="py-16 bg-slate-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Basé sur des ouvrages de référence</h2>
+            <p class="text-slate-600 mb-8">
+                Ce tutoriel a été conçu en s'appuyant sur les méthodes pédagogiques et les projets des livres <span class="font-semibold">"Programmer en s'amusant avec Python pour les Nuls"</span> et <span class="font-semibold">"Python pour les Nuls"</span>.
+            </p>
+            <div class="flex justify-center space-x-6 text-2xl text-slate-500">
+                <i class="fa-solid fa-book-reader hover:text-orange-500 transition"></i>
+                <i class="fa-brands fa-python hover:text-blue-500 transition"></i>
+                <i class="fa-solid fa-code hover:text-slate-700 transition"></i>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800" style="filter: blur(4px);">
-        </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const authModal = document.getElementById('authModal');
-            const cancelAuthBtn = document.getElementById('cancelAuth');
-            
-            // L'ouverture est gérée par le CSS (la classe 'flex' est présente)
-            
-            // Ferme la fenêtre modale (bouton Annuler)
-            cancelAuthBtn.addEventListener('click', () => {
-                // Pour une application réelle, cliquer sur Annuler pourrait renvoyer l'utilisateur
-                // vers une autre page (ex: la page d'accueil publique) ou fermer l'application.
-                // Ici, nous allons simplement la masquer, mais l'utilisateur ne pourrait plus
-                // accéder au contenu tant qu'il n'est pas authentifié.
-                authModal.classList.add('hidden');
-                authModal.classList.remove('flex');
-            });
-
-            // Nous n'ajoutons PAS d'événement pour fermer en cliquant en dehors
-            // car l'authentification est obligatoire pour voir le contenu.
-        });
-        
-        // Bonus: Lorsque le formulaire est soumis (bouton "Se connecter"), il peut gérer la validation
-        // Pour l'instant, sans backend, il essaiera simplement de soumettre, vous devrez ajouter
-        // la logique de validation et de redirection ici plus tard.
-    </script>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-4">Tutoriel éducatif PyMaster - Votre partenaire de codage.</p>
+            <p class="text-xs opacity-60">Conçu pour être simple, complet et interactif.</p>
+        </div>
+    </footer>
 </body>
 </html>
