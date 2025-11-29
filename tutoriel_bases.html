@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Python - Bases & Projet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        pre { background-color: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; position: relative; }
+        code { font-family: 'Courier New', Courier, monospace; }
+        .book-ref { background-color: #fff7ed; border-left: 4px solid #f97316; padding: 1rem; margin-top: 1.5rem; font-size: 0.9rem; color: #9a3412; }
+        .cmd { background-color: #0f172a; color: #10b981; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.9em; }
+        .nav-link { transition: color 0.2s; }
+        .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation Commune -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-python text-3xl text-blue-600"></i>
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">PyMaster</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Accueil</a>
+                    <a href="tutoriel_bases.html" class="text-blue-600 font-medium active nav-link border-blue-600">Tutoriel Python</a>
+                    <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        
+        <!-- En-tête -->
+        <div class="text-center mb-20">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Tutoriel : Les Bases et le Projet
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Apprenez l'installation, les concepts clés et codez votre premier jeu complet.
+            </p>
+        </div>
+
+        <!-- Etape 1: Installation -->
+        <section id="setup" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">1</div>
+                <h2 class="text-3xl font-bold text-slate-900">Préparer le Terrain</h2>
+            </div>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 ml-0 md:ml-8">
+                <p class="text-lg mb-6">Pour parler à l'ordinateur, il nous faut un traducteur (Python) et un carnet de notes (IDLE). Ne vous inquiétez pas, c'est gratuit.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><i class="fa-brands fa-windows mr-2 text-blue-500"></i> Windows</h3>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Allez sur <a href="https://python.org" target="_blank" class="text-blue-600 underline">python.org</a>.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-exclamation text-amber-500 mt-1 mr-2"></i> <strong>TRÈS IMPORTANT :</strong> Cochez la case <span class="cmd">Add Python to PATH</span> au début de l'installation.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cliquez sur "Install Now".</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><i class="fa-brands fa-apple mr-2 text-slate-800"></i> Mac OS</h3>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Téléchargez la dernière version macOS sur python.org.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Une fois installé, cherchez l'application <strong>IDLE</strong> dans votre Launchpad pour coder.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="book-ref">
+                    <i class="fa-solid fa-book-open mr-2"></i>
+                    <strong>Références Officielles :</strong>
+                    <ul class="mt-2 space-y-1 ml-6 list-disc">
+                        <li><em>"Programmer en s'amusant avec Python pour les Nuls"</em> : <strong>Semaine 1, Projet 1</strong> (Détails d'installation complets).</li>
+                        <li><em>"Python pour les Nuls"</em> : <strong>Chapitre 2</strong> (Obtenir votre copie de Python).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etape 2: Logique -->
+        <section id="logic" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">2</div>
+                <h2 class="text-3xl font-bold text-slate-900">Les Briques de Base</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <!-- Concept 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-blue-100 text-blue-700 p-2 rounded-lg mr-3 text-sm">Concept A</span>
+                        Variables & Entrées
+                    </h3>
+                    <p class="mb-4 text-slate-600">Une variable est une boîte pour ranger une information. <code>input()</code> permet de poser une question à l'utilisateur.</p>
+                    <pre><code class="language-python"># On crée une boîte nommée 'joueur'
+# On y range la réponse de l'utilisateur
+joueur = input("Quel est ton nom ? ")
+
+# On utilise le contenu de la boîte
+print(f"Enchanté, {joueur} !")</code></pre>
+                </div>
+
+                <!-- Concept 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">Concept B</span>
+                        Les Conditions (Si... Sinon)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Le programme doit prendre des décisions. En Python, on utilise <code>if</code> (si), <code>elif</code> (sinon si) et <code>else</code> (sinon).</p>
+                    <pre><code class="language-python">age = 12
+
+if age < 10:
+    print("Tu es un enfant.")
+elif age < 18:
+    print("Tu es un ado.")
+else:
+    print("Tu es un adulte.")</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etape 3: Projet -->
+        <section id="project" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">3</div>
+                <h2 class="text-3xl font-bold text-slate-900">Le Projet Final : Jeu de Devinette</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-yellow-100 p-3 rounded-full text-yellow-600 mr-4">
+                            <i class="fa-solid fa-lightbulb text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">L'Objectif</h3>
+                            <p class="text-slate-600">L'ordinateur choisit un nombre secret entre 1 et 100. Vous devez le deviner. À chaque essai, il vous dira si c'est "plus" ou "moins". Ce projet est un classique du livre <em>"Programmer en s'amusant"</em> (Page 82).</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet :</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python">import random  # On importe la boîte à outils du hasard
+
+print("--- JEU DE DEVINETTE ---")
+nombre_secret = random.randint(1, 100)
+essais = 0
+
+print("Je pense à un nombre entre 1 et 100.")
+
+while True:
+    # On demande un nombre (et on le convertit en entier)
+    proposition = int(input("Ta proposition : "))
+    essais = essais + 1
+
+    if proposition == nombre_secret:
+        print(f"Gagné ! Tu as trouvé en {essais} coups !")
+        break  # On sort de la boucle, le jeu est fini
+    elif proposition < nombre_secret:
+        print("C'est plus grand ⬆️")
+    else:
+        print("C'est plus petit ⬇️")</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+                    
+                    <div class="book-ref">
+                        <i class="fa-solid fa-magnifying-glass mr-2"></i>
+                        <strong>Analyse du code :</strong>
+                        <ul class="mt-2 space-y-1 ml-6 list-disc">
+                            <li><code>import random</code> : Apporte les fonctions de hasard (Chapitre 10 de <em>Python pour les Nuls</em>).</li>
+                            <li><code>while True</code> : Crée une boucle infinie qui ne s'arrête que si on gagne (<code>break</code>).</li>
+                            <li><code>int(...)</code> : Convertit le texte tapé par le joueur en nombre pour pouvoir le comparer.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-4">Tutoriel éducatif basé sur les ouvrages de la série "Pour les Nuls".</p>
+            <p class="text-xs opacity-60">Utilisez l'Atelier IA pour aller plus loin et corriger votre code !</p>
+        </div>
+    </footer>
+
+    <script>
+        window.copyCode = (btn) => {
+            const code = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(code);
+            const originalText = btn.innerText;
+            btn.innerText = "Copié !";
+            setTimeout(() => btn.innerText = originalText, 2000);
+        }
+    </script>
+</body>
+</html>
