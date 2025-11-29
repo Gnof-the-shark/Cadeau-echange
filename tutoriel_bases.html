@@ -155,7 +155,7 @@ else:
 
                     <h4 class="font-bold text-slate-800 mb-3">Le Code Complet :</h4>
                     <div class="relative group">
-                        <pre><code class="language-python">import random  # On importe la boîte à outils du hasard
+                        <pre><code class="language-python">import random # On importe la boîte à outils du hasard
 
 print("--- JEU DE DEVINETTE ---")
 nombre_secret = random.randint(1, 100)
@@ -170,7 +170,7 @@ while True:
 
     if proposition == nombre_secret:
         print(f"Gagné ! Tu as trouvé en {essais} coups !")
-        break  # On sort de la boucle, le jeu est fini
+        break # On sort de la boucle, le jeu est fini
     elif proposition < nombre_secret:
         print("C'est plus grand ⬆️")
     else:
@@ -179,7 +179,8 @@ while True:
                     </div>
                     
                     <div class="book-ref">
-                        <i class="fa-solid fa-magnifying-glass mr-2"></i>
+                        <!-- ICÔNE DE CODE GÉNÉRIQUE -->
+                        <i class="fa-solid fa-code mr-2"></i> 
                         <strong>Analyse du code :</strong>
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
                             <li><code>import random</code> : Apporte les fonctions de hasard (Chapitre 10 de <em>Python pour les Nuls</em>).</li>
@@ -203,7 +204,14 @@ while True:
     <script>
         window.copyCode = (btn) => {
             const code = btn.previousElementSibling.innerText;
-            navigator.clipboard.writeText(code);
+            // Utilisation de document.execCommand('copy') pour la compatibilité avec l'environnement iFrame
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
             const originalText = btn.innerText;
             btn.innerText = "Copié !";
             setTimeout(() => btn.innerText = originalText, 2000);
