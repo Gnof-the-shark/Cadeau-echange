@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyMaster - Atelier IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .nav-link { transition: color 0.2s; }
+        .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
+        .ai-card { transition: transform 0.2s; }
+        .ai-card:hover { transform: translateY(-2px); }
+        
+        /* Animation de chargement */
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+            height: 7px; width: 7px; background-color: currentColor; border-radius: 50%; display: inline-block; margin: 0 2px;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        /* Pour le code dans la réponse de l'IA */
+        .prose pre { background-color: #000; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation Commune -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-python text-3xl text-blue-600"></i>
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">PyMaster</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Accueil</a>
+                    <a href="tutoriel_bases.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Tutoriel Python</a>
+                    <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        
+        <!-- SECTION IA -->
+        <section id="ai-lab" class="scroll-mt-24">
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl text-white relative overflow-hidden">
+                <!-- Décoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                
+                <div class="relative z-10 text-center mb-12">
+                    <div class="inline-flex items-center justify-center p-3 bg-white/10 rounded-2xl mb-4 backdrop-blur-sm border border-white/10">
+                        <i class="fa-solid fa-robot text-2xl text-blue-400 mr-3"></i>
+                        <span class="font-bold text-lg">Atelier IA Gemini</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Votre Assistant Personnel de Code</h2>
+                    <p class="text-slate-300 max-w-xl mx-auto">Utilisez l'intelligence artificielle pour aller plus loin. Choisissez un outil ci-dessous.</p>
+                </div>
+
+                <!-- Grille des outils IA -->
+                <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                    
+                    <!-- Outil 1: Explicateur -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('explainer')">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-magnifying-glass-code text-blue-400 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Explicateur de Code ✨</h3>
+                        <p class="text-sm text-slate-400">Collez un bout de code que vous ne comprenez pas, et l'IA vous l'expliquera ligne par ligne.</p>
+                    </div>
+
+                    <!-- Outil 2: Idées -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('ideas')">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-lightbulb text-purple-400 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Générateur d'Idées ✨</h3>
+                        <p class="text-sm text-slate-400">En panne d'inspiration ? Obtenez une idée de projet adaptée à votre niveau.</p>
+                    </div>
+
+                    <!-- Outil 3: Quiz -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('quiz')">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-puzzle-piece text-green-400 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Quiz Express ✨</h3>
+                        <p class="text-sm text-slate-400">Testez vos connaissances immédiatement avec une question générée par l'IA.</p>
+                    </div>
+
+                    <!-- Outil 4: Correcteur (NOUVEAU) -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('corrector')">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-bug text-orange-400 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Correcteur de Bug 🐞</h3>
+                        <p class="text-sm text-slate-400">Votre code ne marche pas ? Collez-le ici, l'IA va trouver l'erreur et vous donner la solution.</p>
+                    </div>
+                </div>
+
+                <!-- Zone d'interaction dynamique -->
+                <div id="tool-interface" class="mt-8 bg-slate-800/50 rounded-2xl border border-white/10 p-6 hidden">
+                    
+                    <!-- Interface Explicateur -->
+                    <div id="ui-explainer" class="hidden tool-ui">
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Collez votre code Python à expliquer :</label>
+                        <textarea id="codeToExplain" rows="4" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-sm font-mono text-blue-300 focus:ring-2 focus:ring-blue-500 outline-none transition mb-4" placeholder="print('Hello World')..."></textarea>
+                        <button onclick="runAI('explainer')" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-medium transition flex items-center">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Expliquer
+                        </button>
+                    </div>
+
+                    <!-- Interface Correcteur (NOUVEAU) -->
+                    <div id="ui-corrector" class="hidden tool-ui">
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Collez votre code qui plante ici :</label>
+                        <textarea id="codeToCorrect" rows="4" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-sm font-mono text-orange-300 focus:ring-2 focus:ring-orange-500 outline-none transition mb-4" placeholder="if x = 5: print('Erreur')..."></textarea>
+                        <button onclick="runAI('corrector')" class="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2 rounded-lg font-medium transition flex items-center">
+                            <i class="fa-solid fa-wrench mr-2"></i> Corriger le code
+                        </button>
+                    </div>
+
+                    <!-- Interface Idées -->
+                    <div id="ui-ideas" class="hidden tool-ui">
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Vos centres d'intérêt (ex: jeux, maths, texte) :</label>
+                        <div class="flex gap-3">
+                            <input type="text" id="interestInput" class="flex-1 bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 outline-none text-white" placeholder="J'aime les jeux vidéo...">
+                            <button onclick="runAI('ideas')" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-lg font-medium transition flex items-center">
+                                <i class="fa-solid fa-bolt mr-2"></i> Générer
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interface Quiz -->
+                    <div id="ui-quiz" class="hidden tool-ui text-center">
+                        <p class="text-slate-300 mb-6">Prêt pour un défi ? L'IA va générer une question sur les bases de Python.</p>
+                        <button onclick="runAI('quiz')" class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-lg font-medium transition flex items-center mx-auto text-lg">
+                            <i class="fa-solid fa-play mr-2"></i> Lancer le Quiz
+                        </button>
+                    </div>
+
+                    <!-- Zone de Résultat -->
+                    <div id="ai-result-container" class="mt-6 pt-6 border-t border-white/10 hidden">
+                        <div class="flex items-center mb-4 text-blue-400">
+                            <i class="fa-solid fa-robot mr-2"></i>
+                            <span class="font-bold text-sm uppercase tracking-wider">Réponse de Gemini</span>
+                        </div>
+                        <div id="ai-output" class="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed"></div>
+                    </div>
+                    
+                    <!-- Loader -->
+                    <div id="ai-loader" class="hidden text-center py-8">
+                        <div class="flex justify-center items-center space-x-1 text-blue-400">
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2 uppercase tracking-widest">Analyse en cours</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-4">Tutoriel éducatif basé sur les ouvrages de la série "Pour les Nuls".</p>
+            <p class="text-xs opacity-60">Utilise l'API Google Gemini pour les fonctionnalités interactives.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Clé API (Gérée par l'environnement)
+        const apiKey = "AIzaSyCBdjXNJoFFUd9zFF_5GVJXvSTmLFjhkw4";
+        
+        const outputDiv = document.getElementById('ai-output');
+        const resultContainer = document.getElementById('ai-result-container');
+        const loader = document.getElementById('ai-loader');
+
+        // Gestion des onglets
+        window.activateTool = (toolType) => {
+            document.getElementById('tool-interface').classList.remove('hidden');
+            
+            // Cacher tous les UIs
+            document.querySelectorAll('.tool-ui').forEach(el => el.classList.add('hidden'));
+            resultContainer.classList.add('hidden');
+            outputDiv.innerHTML = '';
+
+            // Afficher le bon UI
+            document.getElementById(`ui-${toolType}`).classList.remove('hidden');
+            
+            // Scroll doux vers l'interface
+            setTimeout(() => {
+                document.getElementById('tool-interface').scrollIntoView({behavior: 'smooth', block: 'center'});
+            }, 100);
+        };
+
+        window.runAI = async (mode) => {
+            loader.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            
+            let prompt = "";
+            // Le System Prompt pour guider le modèle à agir comme un professeur bienveillant
+            const systemPrompt = "Tu es un professeur de Python bienveillant pour débutants. Réponds en français avec un formatage Markdown clair. Sois concis mais très pédagogique. Utilise des analogies simples.";
+
+            if (mode === 'ideas') {
+                const interest = document.getElementById('interestInput').value || "général";
+                prompt = `Suggère une idée de petit projet Python (moins de 50 lignes) pour un débutant intéressé par : ${interest}. Décris le but et donne les grandes étapes du code.`;
+            } 
+            else if (mode === 'explainer') {
+                const code = document.getElementById('codeToExplain').value;
+                if (!code) {
+                    alert("Veuillez coller du code !");
+                    loader.classList.add('hidden');
+                    return;
+                }
+                prompt = `Explique ce code Python étape par étape pour un débutant complet. Utilise des analogies simples : \n\n${code}`;
+            }
+            else if (mode === 'corrector') {
+                const code = document.getElementById('codeToCorrect').value;
+                if (!code) {
+                    alert("Veuillez coller du code !");
+                    loader.classList.add('hidden');
+                    return;
+                }
+                prompt = `Voici un code Python qui semble contenir des erreurs. 
+                1. Identifie les erreurs (syntaxe ou logique).
+                2. Explique pourquoi ça ne marche pas simplement.
+                3. Donne la version corrigée du code.
+                
+                Code à corriger :
+                \n\n${code}`;
+            }
+            else if (mode === 'quiz') {
+                prompt = `Génère une question à choix multiple (QCM) sur les bases de Python (variables, boucles, conditions). 
+                Format attendu:
+                **Question** : [La question]
+                
+                A) [Option 1]
+                B) [Option 2]
+                C) [Option 3]
+                
+                <details>
+                <summary>Voir la réponse</summary>
+                **Réponse** : [La bonne lettre]
+                *Explication* : [Courte explication]
+                </details>`;
+            }
+
+            // Fonction pour gérer la logique de nouvelle tentative avec backoff
+            const fetchWithRetry = async (url, options, maxRetries = 3) => {
+                for (let i = 0; i < maxRetries; i++) {
+                    try {
+                        const response = await fetch(url, options);
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return await response.json();
+                    } catch (error) {
+                        if (i < maxRetries - 1) {
+                            const delay = Math.pow(2, i) * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                        } else {
+                            throw error;
+                        }
+                    }
+                }
+            };
+
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                
+                const data = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const rawText = data.candidates[0].content.parts[0].text;
+                
+                // Simple Markdown parsing for bold, newlines, and code blocks (prose styles will handle H1/H2 etc)
+                let formattedText = rawText
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-300">$1</strong>')
+                    .replace(/```python([\s\S]*?)```/g, '<pre class="bg-black/30 p-3 rounded my-2 text-xs overflow-x-auto"><code>$1</code></pre>')
+                    .replace(/\n/g, '<br>');
+
+                // Fix for details/summary HTML injection if returned by AI
+                if (mode === 'quiz') {
+                    // Re-apply specific styling for details/summary
+                    formattedText = formattedText.replace(/<details><br>/g, '<details class="mt-4 bg-white/5 p-4 rounded-lg cursor-pointer">');
+                    formattedText = formattedText.replace(/<summary>/g, '<summary class="font-bold text-blue-400 hover:text-blue-300 transition">');
+                }
+
+                outputDiv.innerHTML = formattedText;
+                resultContainer.classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Erreur lors de l'appel à l'API Gemini:", error);
+                outputDiv.innerHTML = "<span class='text-red-400'>Oups, une erreur est survenue avec l'IA. Assurez-vous d'avoir saisi votre texte ou réessayez plus tard.</span>";
+                resultContainer.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
