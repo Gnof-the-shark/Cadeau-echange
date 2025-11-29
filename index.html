@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutoriel Débutant : Apprendre à Coder avec Python et Assistant IA Gemini</title>
-    <!-- Chargement de Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration de la police Inter -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Style personnalisé pour la zone de code */
-        pre {
-            @apply bg-gray-900 text-white p-4 rounded-lg shadow-inner overflow-x-auto text-sm;
-        }
-        code {
-            @apply bg-gray-200 text-gray-800 px-1 rounded;
-        }
-        .reference {
-            @apply bg-green-100 border-l-4 border-green-600 p-4 my-4 rounded-r-lg;
-        }
-        .note {
-            @apply bg-yellow-100 border-l-4 border-yellow-600 p-4 my-4 rounded-r-lg;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Débutant : Apprendre à Coder avec Python et Assistant IA Gemini</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration de la police Inter -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style personnalisé pour la zone de code */
+        pre {
+            @apply bg-gray-900 text-white p-4 rounded-lg shadow-inner overflow-x-auto text-sm;
+        }
+        code {
+            @apply bg-gray-200 text-gray-800 px-1 rounded;
+        }
+        .reference {
+            @apply bg-green-100 border-l-4 border-green-600 p-4 my-4 rounded-r-lg;
+        }
+        .note {
+            @apply bg-yellow-100 border-l-4 border-yellow-600 p-4 my-4 rounded-r-lg;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 p-4 sm:p-8">
 
-    <div class="container mx-auto max-w-4xl bg-white shadow-2xl rounded-xl">
+    <div class="container mx-auto max-w-4xl bg-white shadow-2xl rounded-xl">
 
-        <!-- En-tête -->
-        <header class="bg-green-700 text-white p-8 rounded-t-xl text-center">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">🐍 Tutoriel Débutant : Coder en Python</h1>
-            <p class="mt-2 text-lg font-light">De la base à votre premier assistant IA avec Gemini.</p>
-        </header>
+        <!-- En-tête -->
+        <header class="bg-green-700 text-white p-8 rounded-t-xl text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">🐍 Tutoriel Débutant : Coder en Python</h1>
+            <p class="mt-2 text-lg font-light">De la base à votre premier assistant IA avec Gemini.</p>
+        </header>
 
-        <main class="p-6 sm:p-10">
+        <main class="p-6 sm:p-10">
 
-            <!-- Section 1: Préparation -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">1. Préparer votre environnement</h2>
+            <!-- Section 1: Préparation -->
+            <section class="mb-10">
+                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">1. Préparer votre environnement</h2>
 
-                <div class="step mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.1 Installation de Python</h3>
-                    <p class="text-gray-600">Rendez-vous sur le site officiel de Python pour le téléchargement. C'est la première étape cruciale.</p>
-                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
-                        <li>**Important** : Sous Windows, cochez toujours **"Add Python to PATH"**.</li>
-                        <li>Vérifiez l'installation dans votre terminal avec : <code>python --version</code></li>
-                    </ul>
-                    <div class="reference">
-                        <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
-                        <p>Consultez le **Chapitre 1** de **"Python pour les Nuls, 3e éd."** pour un guide d'installation détaillé.</p>
-                    </div>
-                </div>
+                <div class="step mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.1 Installation de Python</h3>
+                    <p class="text-gray-600">Rendez-vous sur le site officiel de Python pour le téléchargement. C'est la première étape cruciale.</p>
+                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
+                        <li>**Important** : Sous Windows, cochez toujours **"Add Python to PATH"**.</li>
+                        <li>Vérifiez l'installation dans votre terminal avec : <code>python --version</code></li>
+                    </ul>
+                    <div class="reference">
+                        <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
+                        <p>Consultez le **Chapitre 1** de **"Python pour les Nuls, 3e éd."** pour un guide d'installation détaillé.</p>
+                    </div>
+                </div>
 
-                <div class="step">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.2 "Hello World!"</h3>
-                    <p class="text-gray-600">Votre premier programme. Créez un fichier <code>hello.py</code> et exécutez-le.</p>
-                    <pre><code class="language-python">print("Bonjour le monde de Python!")</code></pre>
-                </div>
-            </section>
+                <div class="step">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1.2 "Hello World!"</h3>
+                    <p class="text-gray-600">Votre premier programme. Créez un fichier <code>hello.py</code> et exécutez-le.</p>
+                    <pre><code class="language-python">print("Bonjour le monde de Python!")</code></pre>
+                </div>
+            </section>
 
-            <!-- Section 2: Bases du Langage -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">2. Les Fondamentaux (Variables et Types)</h2>
-                <p class="text-gray-600 mb-4">Les variables sont des étiquettes pour stocker des données (nombres, textes, etc.).</p>
+            <!-- Section 2: Bases du Langage -->
+            <section class="mb-10">
+                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">2. Les Fondamentaux (Variables et Types)</h2>
+                <p class="text-gray-600 mb-4">Les variables sont des étiquettes pour stocker des données (nombres, textes, etc.).</p>
 
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">2.1 Types de Données Essentiels</h3>
-                <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
-                    <li><code>str</code> (Chaîne de caractères) : <code>"Texte"</code></li>
-                    <li><code>int</code> (Entier) : <code>42</code></li>
-                    <li><code>float</code> (Nombre décimal) : <code>3.14</code></li>
-                    <li><code>bool</code> (Booléen) : <code>True</code> ou <code>False</code></li>
-                </ul>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">2.1 Types de Données Essentiels</h3>
+                <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-700">
+                    <li><code>str</code> (Chaîne de caractères) : <code>"Texte"</code></li>
+                    <li><code>int</code> (Entier) : <code>42</code></li>
+                    <li><code>float</code> (Nombre décimal) : <code>3.14</code></li>
+                    <li><code>bool</code> (Booléen) : <code>True</code> ou <code>False</code></li>
+                </ul>
 
-                <h3 class="text-xl font-semibold text-gray-800 mt-4 mb-2">2.2 Exemple de Déclaration</h3>
-                <pre><code class="language-python"># Déclaration des variables
+                <h3 class="text-xl font-semibold text-gray-800 mt-4 mb-2">2.2 Exemple de Déclaration</h3>
+                <pre><code class="language-python"># Déclaration des variables
 nom = "Julie"
 annee = 2025
 temperature = 18.5
@@ -84,184 +84,184 @@ est_ete = False
 
 # Afficher avec une f-string (formatage de chaîne)
 print(f"{nom} est l'année {annee}. Fait-il chaud ? {est_ete}")</code></pre>
-                <div class="reference">
-                    <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
-                    <p>Pour maîtriser les variables et les types de données, consultez le **Chapitre 4** de **"Python pour les Nuls, 3e éd."**.</p>
-                </div>
-            </section>
+                <div class="reference">
+                    <p class="font-bold text-green-800">🔎 Pour plus d'informations :</p>
+                    <p>Pour maîtriser les variables et les types de données, consultez le **Chapitre 4** de **"Python pour les Nuls, 3e éd."**.</p>
+                </div>
+            </section>
 
-            <!-- Section 3: Assistant IA Gemini -->
-            <section class="mb-10">
-                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">3. Créer un Assistant IA avec Gemini</h2>
-                <p class="text-gray-600 mb-4">Nous allons utiliser l'API Gemini pour obtenir des suggestions de projets personnalisés.</p>
-                
+            <!-- Section 3: Assistant IA Gemini -->
+            <section class="mb-10">
+                <h2 class="text-3xl font-bold text-green-700 border-b-2 border-green-300 pb-2 mb-6">3. Créer un Assistant IA avec Gemini</h2>
+                <p class="text-gray-600 mb-4">Nous allons utiliser l'API Gemini pour obtenir des suggestions de projets personnalisés.</p>
+                
 
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">3.1 Le Code de l'Assistant (HTML/JS)</h3>
-                <div class="note">
-                    **Attention :** Le code ci-dessous est en **JavaScript** et doit être exécuté dans le navigateur. Il fait un appel à l'API Gemini pour générer du texte.
-                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">3.1 Le Code de l'Assistant (HTML/JS)</h3>
+                <div class="note">
+                    **Attention :** Le code ci-dessous est en **JavaScript** et doit être exécuté dans le navigateur. Il fait un appel à l'API Gemini pour générer du texte.
+                </div>
 
-                <div id="assistant-ui" class="bg-gray-100 p-6 rounded-lg shadow-lg">
-                    <h4 class="text-2xl font-semibold text-blue-800 mb-4">Assistant de Projet Python (Propulsé par Gemini)</h4>
-                    
-                    <label for="interest" class="block text-gray-700 font-medium mb-1">Votre niveau et vos intérêts (Ex: Débutant, jeux vidéo)</label>
-                    <input type="text" id="interest" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" placeholder="Entrez votre niveau et vos intérêts ici...">
-                    
-                    <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
-                        Générer une idée de projet
-                    </button>
+                <div id="assistant-ui" class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-semibold text-blue-800 mb-4">Assistant de Projet Python (Propulsé par Gemini)</h4>
+                    
+                    <label for="interest" class="block text-gray-700 font-medium mb-1">Votre niveau et vos intérêts (Ex: Débutant, jeux vidéo)</label>
+                    <input type="text" id="interest" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" placeholder="Entrez votre niveau et vos intérêts ici...">
+                    
+                    <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        Générer une idée de projet
+                    </button>
 
-                    <div id="loading" class="mt-4 hidden text-center">
-                        <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status">
-                            <span class="sr-only">Chargement...</span>
-                        </div>
-                        <p class="text-blue-600 mt-2">L'IA de Gemini réfléchit à votre projet...</p>
-                    </div>
+                    <div id="loading" class="mt-4 hidden text-center">
+                        <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status">
+                            <span class="sr-only">Chargement...</span>
+                        </div>
+                        <p class="text-blue-600 mt-2">L'IA de Gemini réfléchit à votre projet...</p>
+                    </div>
 
-                    <div id="result" class="mt-6 p-4 bg-white border border-blue-200 rounded-lg shadow-inner hidden">
-                        <h5 class="text-lg font-bold text-blue-700 mb-2">Suggestion de Projet :</h5>
-                        <p id="gemini-output" class="whitespace-pre-wrap text-gray-700"></p>
-                    </div>
+                    <div id="result" class="mt-6 p-4 bg-white border border-blue-200 rounded-lg shadow-inner hidden">
+                        <h5 class="text-lg font-bold text-blue-700 mb-2">Suggestion de Projet :</h5>
+                        <p id="gemini-output" class="whitespace-pre-wrap text-gray-700"></p>
+                    </div>
 
-                    <div id="error-message" class="mt-6 p-4 bg-red-100 border border-red-500 text-red-700 rounded-lg shadow-inner hidden">
-                        <p class="font-bold">Erreur :</p>
-                        <p id="error-text"></p>
-                    </div>
-                </div>
-            </section>
-        </main>
+                    <div id="error-message" class="mt-6 p-4 bg-red-100 border border-red-500 text-red-700 rounded-lg shadow-inner hidden">
+                        <p class="font-bold">Erreur :</p>
+                        <p id="error-text"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-        <!-- Pied de page -->
-        <footer class="bg-gray-800 text-white p-6 text-center rounded-b-xl">
-            <h3 class="text-xl font-semibold mb-2">4. Prochaines Étapes Essentielles</h3>
-            <p class="text-sm">Pour passer au niveau supérieur :</p>
-            <ul class="list-none mt-2 space-y-1 text-gray-300">
-                <li>Maîtrisez les **Conditions** (<code>if/else</code>) et les **Boucles** (<code>for/while</code>).
-                    <div class="reference inline-block p-1 bg-gray-600 rounded-md ml-2">
-                        <span class="text-xs text-white">Voir **Semaine 2** de **"Programmer en s'amusant avec Python..."**</span>
-                    </div>
-                </li>
-                <li>Apprenez les **Fonctions** (<code>def</code>) pour organiser votre code.</li>
-            </ul>
-        </footer>
-    </div>
+        <!-- Pied de page -->
+        <footer class="bg-gray-800 text-white p-6 text-center rounded-b-xl">
+            <h3 class="text-xl font-semibold mb-2">4. Prochaines Étapes Essentielles</h3>
+            <p class="text-sm">Pour passer au niveau supérieur :</p>
+            <ul class="list-none mt-2 space-y-1 text-gray-300">
+                <li>Maîtrisez les **Conditions** (<code>if/else</code>) et les **Boucles** (<code>for/while</code>).
+                    <div class="reference inline-block p-1 bg-gray-600 rounded-md ml-2">
+                        <span class="text-xs text-white">Voir **Semaine 2** de **"Programmer en s'amusant avec Python..."**</span>
+                    </div>
+                </li>
+                <li>Apprenez les **Fonctions** (<code>def</code>) pour organiser votre code.</li>
+            </ul>
+        </footer>
+    </div>
 
-    <!-- JavaScript pour l'Assistant IA -->
-    <script type="module">
-        // La clé API est intentionnellement laissée vide ici. 
-        // L'environnement Canvas fournira la clé au moment de l'exécution.
-        const apiKey = "AIzaSyCOWi56orJN2NuE6kxytzec7v9XheFWMW4"; 
-        const model = 'gemini-2.5-flash-preview-09-2025';
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+    <!-- JavaScript pour l'Assistant IA -->
+    <script type="module">
+        // La clé API est intentionnellement laissée vide ici. 
+        // L'environnement Canvas fournira la clé au moment de l'exécution.
+        const apiKey = "AIzaSyCOWi56orJN2NuE6kxytzec7v9XheFWMW4"; 
+        const model = 'gemini-2.5-flash-preview-09-2025';
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
-        const interestInput = document.getElementById('interest');
-        const generateBtn = document.getElementById('generate-btn');
-        const loadingDiv = document.getElementById('loading');
-        const resultDiv = document.getElementById('result');
-        const geminiOutput = document.getElementById('gemini-output');
-        const errorDiv = document.getElementById('error-message');
-        const errorText = document.getElementById('error-text');
+        const interestInput = document.getElementById('interest');
+        const generateBtn = document.getElementById('generate-btn');
+        const loadingDiv = document.getElementById('loading');
+        const resultDiv = document.getElementById('result');
+        const geminiOutput = document.getElementById('gemini-output');
+        const errorDiv = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
 
-        // Fonction pour gérer les erreurs et l'affichage
-        const displayError = (message) => {
-            errorText.textContent = message;
-            errorDiv.classList.remove('hidden');
-            loadingDiv.classList.add('hidden');
-            resultDiv.classList.add('hidden');
-        };
+        // Fonction pour gérer les erreurs et l'affichage
+        const displayError = (message) => {
+            errorText.textContent = message;
+            errorDiv.classList.remove('hidden');
+            loadingDiv.classList.add('hidden');
+            resultDiv.classList.add('hidden');
+        };
 
-        // Implémentation de la fonction d'attente (sleep)
-        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        // Implémentation de la fonction d'attente (sleep)
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        // Fonction principale pour l'appel à l'API
-        const generateProjectIdea = async () => {
-            const userQuery = interestInput.value.trim();
-            if (!userQuery) {
-                displayError("Veuillez entrer votre niveau et vos intérêts pour que l'IA puisse vous aider.");
-                return;
-            }
+        // Fonction principale pour l'appel à l'API
+        const generateProjectIdea = async () => {
+            const userQuery = interestInput.value.trim();
+            if (!userQuery) {
+                displayError("Veuillez entrer votre niveau et vos intérêts pour que l'IA puisse vous aider.");
+                return;
+            }
 
-            // Réinitialiser les affichages
-            resultDiv.classList.add('hidden');
-            errorDiv.classList.add('hidden');
-            loadingDiv.classList.remove('hidden');
-            generateBtn.disabled = true;
+            // Réinitialiser les affichages
+            resultDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+            loadingDiv.classList.remove('hidden');
+            generateBtn.disabled = true;
 
-            const systemPrompt = "Act as a world-class Python programming tutor. Your goal is to suggest a beginner-friendly, educational Python project based on the user's input, and provide the first concrete step to get started. Respond only in French.";
+            const systemPrompt = "Act as a world-class Python programming tutor. Your goal is to suggest a beginner-friendly, educational Python project based on the user's input, and provide the first concrete step to get started. Respond only in French.";
 
-            const userPrompt = `Je suis un débutant en programmation. Mon niveau et mes intérêts sont : "${userQuery}". Suggère-moi un projet Python adapté et donne-moi la première action concrète à faire (par exemple: 'Installer la librairie X' ou 'Définir les variables Y'). Mentionne si possible un Chapitre ou une Semaine d'un des deux livres fournis ("Python pour les Nuls, 3e éd." ou "Programmer en s'amusant avec Python pour les Nuls, 3e éd.") comme référence si le concept est abordé (ex: Pour ce projet, il vous faudra utiliser les boucles (voir Chapitre 5 de 'Python pour les Nuls, 3e éd.')).`;
+            const userPrompt = `Je suis un débutant en programmation. Mon niveau et mes intérêts sont : "${userQuery}". Suggère-moi un projet Python adapté et donne-moi la première action concrète à faire (par exemple: 'Installer la librairie X' ou 'Définir les variables Y'). Mentionne si possible un Chapitre ou une Semaine d'un des deux livres fournis ("Python pour les Nuls, 3e éd." ou "Programmer en s'amusant avec Python pour les Nuls, 3e éd.") comme référence si le concept est abordé (ex: Pour ce projet, il vous faudra utiliser les boucles (voir Chapitre 5 de 'Python pour les Nuls, 3e éd.')).`;
 
-            const payload = {
-                contents: [{ parts: [{ text: userPrompt }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                config: {
-                    temperature: 0.7
-                }
-            };
-            
-            let response;
-            const maxRetries = 3;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+                config: {
+                    temperature: 0.7
+                }
+            };
+            
+            let response;
+            const maxRetries = 3;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
 
-                    if (response.ok) {
-                        break; // Succès, sortir de la boucle
-                    } else if (response.status === 429 && i < maxRetries - 1) {
-                        // Gérer le cas de throttling (trop de requêtes) avec backoff exponentiel
-                        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
-                        await sleep(delay);
-                        continue; // Tenter à nouveau
-                    } else {
-                        throw new Error(`Erreur HTTP: ${response.status} ${response.statusText}`);
-                    }
-                } catch (e) {
-                    if (i === maxRetries - 1) {
-                        displayError(`Impossible de contacter l'API après ${maxRetries} tentatives. Veuillez réessayer plus tard.`);
-                        console.error(e);
-                        generateBtn.disabled = false;
-                        return;
-                    }
-                }
-            }
-            
-            // Traiter la réponse
-            try {
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
+                    if (response.ok) {
+                        break; // Succès, sortir de la boucle
+                    } else if (response.status === 429 && i < maxRetries - 1) {
+                        // Gérer le cas de throttling (trop de requêtes) avec backoff exponentiel
+                        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+                        await sleep(delay);
+                        continue; // Tenter à nouveau
+                    } else {
+                        throw new Error(`Erreur HTTP: ${response.status} ${response.statusText}`);
+                    }
+                } catch (e) {
+                    if (i === maxRetries - 1) {
+                        displayError(`Impossible de contacter l'API après ${maxRetries} tentatives. Veuillez réessayer plus tard.`);
+                        console.error(e);
+                        generateBtn.disabled = false;
+                        return;
+                    }
+                }
+            }
+            
+            // Traiter la réponse
+            try {
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
 
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    const text = candidate.content.parts[0].text;
-                    geminiOutput.textContent = text;
-                    resultDiv.classList.remove('hidden');
-                } else {
-                    displayError("L'IA n'a pas pu générer de réponse. Le format de réponse est incorrect.");
-                    console.error("Réponse API inattendue:", result);
-                }
-            } catch (e) {
-                displayError("Erreur lors du traitement de la réponse de l'IA.");
-                console.error(e);
-            }
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    geminiOutput.textContent = text;
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    displayError("L'IA n'a pas pu générer de réponse. Le format de réponse est incorrect.");
+                    console.error("Réponse API inattendue:", result);
+                }
+            } catch (e) {
+                displayError("Erreur lors du traitement de la réponse de l'IA.");
+                console.error(e);
+            }
 
-            // Terminé
-            loadingDiv.classList.add('hidden');
-            generateBtn.disabled = false;
-        };
+            // Terminé
+            loadingDiv.classList.add('hidden');
+            generateBtn.disabled = false;
+        };
 
-        generateBtn.addEventListener('click', generateProjectIdea);
-        
-        // Permettre d'utiliser la touche Entrée dans le champ de saisie
-        interestInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                generateProjectIdea();
-            }
-        });
-    </script>
+        generateBtn.addEventListener('click', generateProjectIdea);
+        
+        // Permettre d'utiliser la touche Entrée dans le champ de saisie
+        interestInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                generateProjectIdea();
+            }
+        });
+    </script>
 </body>
 </html>
