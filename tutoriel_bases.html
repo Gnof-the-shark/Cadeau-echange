@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyMaster - Tuto</title>
+    <title>PyMaster - Tuto Complet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        pre { background-color: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; position: relative; }
+        pre { 
+            background-color: #1e293b; 
+            color: #e2e8f0; 
+            padding: 1.25rem; 
+            border-radius: 0.5rem; 
+            overflow-x: auto; 
+            position: relative; 
+            white-space: pre-wrap; /* Permet le retour à la ligne pour le confort des commentaires longs */
+        }
         code { font-family: 'Courier New', Courier, monospace; }
         .book-ref { background-color: #fff7ed; border-left: 4px solid #f97316; padding: 1rem; margin-top: 1.5rem; font-size: 0.9rem; color: #9a3412; }
+        .concept-box { background-color: #f0f9ff; border: 1px solid #bae6fd; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; }
         .cmd { background-color: #0f172a; color: #10b981; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.9em; }
         .nav-link { transition: color 0.2s; }
         .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
@@ -29,9 +38,9 @@
                     <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">PyMaster</span>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="index.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Accueil</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Accueil</a>
                     <a href="#setup" class="text-blue-600 font-medium active nav-link border-blue-600">Tutoriel Python</a>
-                    <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="#atelier_ia" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
                     </a>
                 </div>
@@ -43,13 +52,14 @@
         
         <div class="text-center mb-20">
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
-                Tutoriel : Les Bases et le Projet
+                Tutoriel : Les Bases Expliquées Ligne par Ligne
             </h1>
             <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Apprenez l'installation, les concepts clés et codez votre premier jeu complet.
+                Chaque concept, chaque symbole, chaque ligne de code est décortiquée pour une compréhension totale.
             </p>
         </div>
 
+        <!-- Section 1: Installation -->
         <section id="setup" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -58,7 +68,7 @@
             </div>
             
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 ml-0 md:ml-8">
-                <p class="text-lg mb-6">Pour parler à l'ordinateur, il nous faut un traducteur (Python) et un carnet de notes (IDLE). Ne vous inquiétez pas, c'est gratuit.</p>
+                <p class="text-lg mb-6">Pour parler à l'ordinateur, il nous faut un traducteur (Python) et un carnet de notes (IDLE).</p>
                 
                 <p class="font-semibold mb-3">Choisissez votre système d'exploitation :</p>
                 <div class="flex space-x-4 mb-8 border-b pb-4">
@@ -96,10 +106,10 @@
 
                 <div class="book-ref">
                     <i class="fa-solid fa-book-open mr-2"></i>
-                    <strong>Références Officielles :</strong>
+                    <strong>Références pour l'installation :</strong>
                     <ul class="mt-2 space-y-1 ml-6 list-disc">
-                        <li><em>"Programmer en s'amusant avec Python pour les Nuls"</em> : <strong>Semaine 1, Projet 1</strong> (Détails d'installation complets).</li>
-                        <li><em>"Python pour les Nuls"</em> : <strong>Chapitre 2</strong> (Obtenir votre copie de Python).</li>
+                        <li>*Programmer en s'amusant avec Python pour les Nuls* : **Voir la Semaine 1, Projet 1** pour la première mise en place.</li>
+                        <li>*Python pour les Nuls* : **Voir le Chapitre 2** (Obtenir votre copie de Python).</li>
                     </ul>
                 </div>
             </div>
@@ -107,53 +117,336 @@
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <section id="logic" class="mb-20 scroll-mt-24 relative">
+        <!-- Section 2: Outils et Organisation -->
+        <section id="tools" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
                 <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">2</div>
-                <h2 class="text-3xl font-bold text-slate-900">Les Briques de Base</h2>
+                <h2 class="text-3xl font-bold text-slate-900">Outils et Organisation</h2>
             </div>
-
+            
             <div class="ml-0 md:ml-8 grid gap-8">
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="bg-blue-100 text-blue-700 p-2 rounded-lg mr-3 text-sm">Concept A</span>
-                        Variables & Entrées
-                    </h3>
-                    <p class="mb-4 text-slate-600">Une variable est une boîte pour ranger une information. <code>input()</code> permet de poser une question à l'utilisateur.</p>
-                    <pre><code class="language-python"># On crée une boîte nommée 'joueur'
-# On y range la réponse de l'utilisateur
-joueur = input("Quel est ton nom ? ")
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-box-open mr-3 text-orange-500"></i> Les "Boîtes à outils" (<span class="cmd">pip</span> et <code class="language-python">import</code>)</h3>
+                    
+                    <h4 class="font-bold text-slate-800 mb-2">Installer des librairies avec <span class="cmd">pip</span> :</h4>
+                    <p class="mb-4 text-slate-600"><span class="cmd">pip</span> est l'outil pour installer des bibliothèques externes (appelées *packages* ou *modules*). Vous l'utilisez dans le Terminal.</p>
+                    <pre><code class="language-bash">pip install requests # Commande pour installer la librairie 'requests' depuis le web (PyPI)</code></pre>
 
-# On utilise le contenu de la boîte
-print(f"Enchanté, {joueur} !")</code></pre>
+                    <h4 class="font-bold text-slate-800 mt-6 mb-2">Utiliser des modules avec <code class="language-python">import</code> :</h4>
+                    <p class="mb-4 text-slate-600">Une fois installée, vous devez <code class="language-python">import</code>er la librairie au début de votre script pour pouvoir l'utiliser.</p>
+                    <pre><code class="language-python">import math                  # Importe l'intégralité du module mathématique (comme ouvrir une boîte)
+print(math.sqrt(16))          # Affiche le résultat de la fonction 'sqrt' (racine carrée) du module 'math'
+# Pour utiliser une fonction du module, on écrit 'module.fonction()'
+</code></pre>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">Concept B</span>
-                        Les Conditions (Si... Sinon)
-                    </h3>
-                    <p class="mb-4 text-slate-600">Le programme doit prendre des décisions. En Python, on utilise <code>if</code> (si), <code>elif</code> (sinon si) et <code>else</code> (sinon).</p>
-                    <pre><code class="language-python">age = 12
-
-if age < 10:
-    print("Tu es un enfant.")
-elif age < 18:
-    print("Tu es un ado.")
-else:
-    print("Tu es un adulte.")</code></pre>
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-keyboard mr-3 text-blue-400"></i> Raccourcis Clavier Essentiels</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2">Commandes Fichier</h4>
+                            <ul class="space-y-3 text-slate-700">
+                                <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + S</span> : **Sauvegarder** le fichier.</li>
+                                <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">F5</span> (dans IDLE) : **Exécuter** le script.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2">Productivité Code</h4>
+                            <ul class="space-y-3 text-slate-700">
+                                <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + /</span> : **Commenter/Décommenter** une ligne.</li>
+                                <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Tab</span> : **Indenter** (décaler) le code. C'est VITAL en Python !</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <hr class="border-t-2 border-slate-200 my-16">
-        
-        <section id="project" class="mb-20 scroll-mt-24 relative">
+
+        <!-- Section 3: Le Langage (Symbole) -->
+        <section id="symbols" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
                 <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">3</div>
-                <h2 class="text-3xl font-bold text-slate-900">Le Projet Final : Jeu de Devinette</h2>
+                <h2 class="text-3xl font-bold text-slate-900">Le Langage : Quand utiliser quel symbole ?</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-yellow-100 text-yellow-700 p-2 rounded-lg mr-3 text-sm">"" / ''</span> Les Guillemets (Délimiteur de Texte)</h3>
+                    <p class="mb-4 text-slate-600">Délimitent le **texte pur** (type `string`). Python n'interprète pas ce qui est à l'intérieur comme du code. On peut utiliser des guillemets simples ou doubles, mais il faut être cohérent.</p>
+                    <div class="concept-box">
+                        <strong class="text-yellow-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python"># Assignation : La valeur (texte) "Ceci est une chaîne de caractères." est stockée dans la variable 'message'
+message = "Ceci est une chaîne de caractères." </code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-red-100 text-red-700 p-2 rounded-lg mr-3 text-sm">()</span> Les Parenthèses (Appel de Fonction / Ordre)</h3>
+                    <p class="mb-4 text-slate-600">Elles ont deux fonctions principales : l'appel de fonction et la définition de la priorité des opérations.</p>
+                    <div class="concept-box">
+                        <strong class="text-red-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">print("Salut")              # Exécute la fonction 'print' en lui donnant "Salut" comme argument (texte à afficher)
+resultat = (10 + 5) * 2     # Les parenthèses forcent l'opération '10 + 5' (15) à être exécutée avant la multiplication par 2
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">[] et {}</span> Crochets et Accolades (Collections)</h3>
+                    <p class="mb-4 text-slate-600">Elles sont utilisées pour créer et manipuler les collections complexes de données.</p>
+                    <div class="concept-box">
+                        <strong class="text-purple-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">ma_liste = [10, 20, 30]           # Les crochets créent une LISTE de trois nombres
+print(ma_liste[0])                # Les crochets sont utilisés pour ACCÉDER au premier élément de la liste (index 0)
+
+mon_dict = {"nom": "Paul", "age": 30} # Les accolades créent un DICTIONNAIRE de paires Clé:Valeur
+print(mon_dict["nom"])            # Les crochets sont utilisés pour ACCÉDER à la valeur associée à la clé "nom"
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <!-- Section 4: Logique de Base -->
+        <section id="logic" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">4</div>
+                <h2 class="text-3xl font-bold text-slate-900">Les Briques de Base & Prise de Décision</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <!-- Variables -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-blue-100 text-blue-700 p-2 rounded-lg mr-3 text-sm">A</span>
+                        Variables & Entrées (<code class="language-python">input()</code>)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Le signe **`=`** est l'opérateur d'assignation. Il place la valeur de droite dans la variable nommée à gauche.</p>
+                    
+                    <div class="concept-box">
+                        <strong class="text-blue-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">reponse = 42                                     # Assignation : La valeur numérique 42 est stockée dans la variable 'reponse'
+nom = input("Quel est ton nom ? ")              # La fonction input() affiche la question et stocke la réponse textuelle de l'utilisateur dans 'nom'
+age_texte = input("Quel est ton âge ? ")        # Stocke l'âge saisi (toujours du texte initialement) dans 'age_texte'
+age = int(age_texte)                            # Le mot-clé int() convertit le texte de 'age_texte' en nombre entier et le stocke dans 'age'
+</code></pre>
+                    </div>
+                </div>
+
+                <!-- Conditions -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">B</span>
+                        Les Conditions : La Logique <code class="language-python">if</code>, <code class="language-python">elif</code>, <code class="language-python">else</code>
+                    </h3>
+                    <p class="mb-4 text-slate-600">Ces mots-clés permettent au programme de prendre des décisions basées sur des comparaisons. [Image of flowchart for if elif else structure]</p>
+                    
+                    <div class="concept-box">
+                        <strong class="text-purple-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">age = 17                              # Initialise la variable 'age' à 17
+
+if age >= 18:                         # Première condition : Si 'age' est supérieur ou égal à 18 (faux, car 17 < 18)
+    print("Vous êtes majeur.")         # Cette ligne est ignorée car la condition est fausse
+elif age >= 16:                       # Deuxième condition (vérifiée après l'échec du 'if') : Si 'age' est supérieur ou égal à 16 (vrai, car 17 >= 16)
+    print("Vous pouvez conduire avec accompagnateur.") # Cette ligne est exécutée
+else:                                 # Ce bloc est la condition par défaut (si toutes les autres sont fausses)
+    print("Vous êtes mineur.")         # Cette ligne est ignorée car le 'elif' précédent était vrai
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <!-- Section 5: Structures de Données -->
+        <section id="structures" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">5</div>
+                <h2 class="text-3xl font-bold text-slate-900">Structures de Données : Ranger l'Information</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <!-- Listes -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-green-100 text-green-700 p-2 rounded-lg mr-3 text-sm">A</span>
+                        Les Listes (Conteneurs Ordre et Modifiable)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Les listes sont des séquences d'éléments délimités par des crochets **`[]`**. </p>
+                    
+                    <div class="concept-box">
+                        <strong class="text-green-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">liste_courses = ["oeufs", "lait", "pain"]  # Crée une liste de chaînes de caractères (index 0, 1, 2)
+print(liste_courses[0])                    # Affiche l'élément à l'index 0, soit "oeufs"
+liste_courses.append("fromage")            # Ajoute l'élément "fromage" à la fin de la liste
+liste_courses.remove("lait")               # Recherche et retire la première occurrence de la valeur "lait"
+</code></pre>
+                    </div>
+                </div>
+
+                <!-- Dictionnaires -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-red-100 text-red-700 p-2 rounded-lg mr-3 text-sm">B</span>
+                        Les Dictionnaires (Clé:Valeur)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Les dictionnaires sont délimités par des accolades **`{}`** et stockent les données sous forme de paires **Clé:Valeur**. </p>
+                    
+                    <div class="concept-box">
+                        <strong class="text-red-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">profil = {                           # Début du dictionnaire (accorde)
+    "nom": "Alice",                  # Première paire: la clé "nom" pointe vers la valeur "Alice"
+    "age": 28,                       # Deuxième paire: la clé "age" pointe vers la valeur 28
+    "ville": "Paris"                 # Troisième paire
+}                                    # Fin du dictionnaire
+print(f"Nom: {profil['nom']}")     # Affiche "Nom: Alice" en accédant à la valeur via la clé "nom"
+profil["age"] = 29                   # Modifie la valeur associée à la clé "age" et la met à 29
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <!-- Section 6: Boucles et Fonctions -->
+        <section id="flow" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">6</div>
+                <h2 class="text-3xl font-bold text-slate-900">Le Moteur : Répétition et Réutilisabilité</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <!-- Boucles -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-yellow-100 text-yellow-700 p-2 rounded-lg mr-3 text-sm">A</span>
+                        Les Boucles (<code class="language-python">for</code> et <code class="language-python">while</code>)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Les boucles servent à automatiser les tâches répétitives. [Image of programming loop flow chart]</p>
+                    
+                    <h4 class="font-bold text-slate-800 mb-2">Boucle FOR (Itération) :</h4>
+                    <div class="concept-box">
+                        <strong class="text-yellow-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">fruits = ["pomme", "poire", "kiwi"]       # La liste des éléments à parcourir
+for f in fruits:                          # Démarre la boucle FOR : pour chaque élément 'f' dans la liste 'fruits'
+    print(f"J'aime la {f}")               # Exécute l'action (affichage) en utilisant la valeur courante de 'f'
+</code></pre>
+                    </div>
+                    
+                    <h4 class="font-bold text-slate-800 mt-6 mb-2">Boucle WHILE (Conditionnelle) :</h4>
+                    <div class="concept-box">
+                        <strong class="text-yellow-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">i = 5                                     # Initialise la variable de compteur 'i' à 5
+while i > 0:                              # Démarre la boucle WHILE : Tant que 'i' est strictement supérieur à 0, répéter
+    print(i)                              # Affiche la valeur courante de 'i'
+    i -= 1                                # Décrémente 'i' de 1 (i = i - 1). C'est l'étape qui mène à la fin de la boucle.
+# La boucle s'arrête quand i atteint 0
+</code></pre>
+                    </div>
+                </div>
+
+                <!-- Fonctions -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3 text-sm">B</span>
+                        Les Fonctions (<code class="language-python">def</code> et <code class="language-python">return</code>)
+                    </h3>
+                    <p class="mb-4 text-slate-600">Une fonction est une mini-machine : vous lui donnez une entrée (argument), elle travaille, et vous donne une sortie (valeur de retour).</p>
+                    
+                    <div class="concept-box">
+                        <strong class="text-indigo-700 block mb-2">Exemple Ligne par Ligne :</strong>
+                        <pre><code class="language-python">def calculer_aire_carre(cote):      # Le mot-clé 'def' définit la fonction. 'cote' est l'argument attendu.
+    return cote * cote                 # Le mot-clé 'return' renvoie le résultat du calcul (cote * cote) à l'appelant de la fonction.
+
+# L'appel à la fonction (avec la valeur 7 pour 'cote')
+a = calculer_aire_carre(7)          # Appelle la fonction. La variable 'a' reçoit la valeur renvoyée (7 * 7 = 49).
+print(a)                           # Affiche la valeur de 'a', soit 49.
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <!-- Section 7: Tkinter et GUI -->
+        <section id="tkinter" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">7</div>
+                <h2 class="text-3xl font-bold text-slate-900">Le Niveau Supérieur : Interfaces Graphiques (GUI) avec Tkinter</h2>
+            </div>
+            
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <p class="text-lg mb-6">**Tkinter** est la bibliothèque standard qui transforme votre code Python en applications de bureau avec des fenêtres. </p>
+
+                    <h3 class="text-xl font-bold mt-8 mb-4 flex items-center"><i class="fa-solid fa-code-branch mr-3 text-green-500"></i> Code Décomposé Ligne par Ligne</h3>
+                    <div class="relative group mb-8">
+                        <pre><code class="language-python">import tkinter as tk                                 # 1. Importe la librairie Tkinter et lui donne le raccourci 'tk' pour plus de simplicité
+
+# 2. Définit la fonction qui sera exécutée lors du clic sur le bouton
+def saluer():                                        # Début de la définition de la fonction 'saluer'
+    message_label.config(text="Bonjour ! Le message a changé !") # Utilise la méthode .config() pour modifier la propriété 'text' du widget 'message_label'
+
+# 3. Initialisation de la Fenêtre Principale (le "root")
+fenetre = tk.Tk()                                    # Crée l'objet Fenêtre principale (la boîte extérieure)
+fenetre.title("Ma Première App")                     # Donne un titre à la fenêtre
+fenetre.geometry("350x150")                          # Définit la taille initiale de la fenêtre (Largeur x Hauteur)
+
+# 4. Créer et Placer les Widgets
+# Widget de Texte (Label)
+message_label = tk.Label(fenetre, text="Cliquez sur le bouton ci-dessous.") # Crée un Label (texte) dans la 'fenetre' avec un texte initial
+message_label.pack(pady=10)                          # Place le Label. La méthode .pack() organise les widgets et pady ajoute un espacement vertical de 10 pixels
+
+# Widget Bouton (Button)
+bouton = tk.Button(                                 # Crée un Bouton dans la 'fenetre'
+    fenetre,                                         # Le premier argument indique que le bouton appartient à la 'fenetre'
+    text="Cliquez ici !",                           # Le texte affiché sur le bouton
+    command=saluer,                                  # ATTENTION: Spécifie la fonction 'saluer' à appeler LORS du clic (SANS les parenthèses !)
+    bg="#2563eb",                                    # Couleur de fond (code hexadécimal bleu)
+    fg="white"                                       # Couleur du texte (blanc)
+)
+bouton.pack(pady=10)                                # Place le bouton avec un espacement
+
+# 5. Démarrer la Boucle Principale
+fenetre.mainloop()                                   # OBLIGATOIRE : Lance le moteur Tkinter. La fenêtre reste ouverte et attend les actions utilisateur.
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref bg-green-50 border-green-400 text-green-800">
+                        <i class="fa-solid fa-desktop mr-2"></i>
+                        <strong>Points Clés Tkinter :</strong>
+                        <ul class="mt-2 space-y-1 ml-6 list-disc">
+                            <li><code class="language-python">.config()</code> : Utilisé pour modifier dynamiquement les propriétés d'un widget (comme le texte d'un `Label`) APRES sa création.</li>
+                            <li><code class="language-python">command=saluer</code> : On lie le clic du bouton à la fonction `saluer`. **Jamais de `()` ici**.</li>
+                            <li><code class="language-python">.mainloop()</code> : Le moteur de l'application. Tant que cette boucle tourne, la fenêtre est visible et réactive.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <!-- Section 8: Projet 1 - Jeu de Devinette -->
+        <section id="project1" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">8</div>
+                <h2 class="text-3xl font-bold text-slate-900">Projet 1 : Jeu de Devinette (Console)</h2>
             </div>
 
             <div class="ml-0 md:ml-8">
@@ -164,42 +457,49 @@ else:
                         </div>
                         <div>
                             <h3 class="text-xl font-bold mb-2">L'Objectif</h3>
-                            <p class="text-slate-600">L'ordinateur choisit un nombre secret entre 1 et 100. Vous devez le deviner. À chaque essai, il vous dira si c'est "plus" ou "moins". Ce projet est un classique du livre <em>"Programmer en s'amusant"</em> (Page 82).</p>
+                            <p class="text-slate-600">Un jeu pour deviner un nombre secret. Il utilise <code class="language-python">import random</code>, <code class="language-python">while True</code> et les conditions <code class="language-python">if/elif/else</code>.</p>
                         </div>
                     </div>
 
-                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet :</h4>
+                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet (Ligne par Ligne) :</h4>
                     <div class="relative group">
-                        <pre><code class="language-python">import random # On importe la boîte à outils du hasard
+                        <pre><code class="language-python">import random                               # Importe la boîte à outils du hasard (module standard)
 
-print("--- JEU DE DEVINETTE ---")
-nombre_secret = random.randint(1, 100)
-essais = 0
+print("--- JEU DE DEVINETTE ---")           # Affiche le titre du jeu dans la console
+nombre_secret = random.randint(1, 100)      # Utilise la fonction randint du module random pour choisir un nombre entre 1 et 100
+essais = 0                                  # Initialise le compteur d'essais à zéro (c'est une variable)
 
-print("Je pense à un nombre entre 1 et 100.")
+print("Je pense à un nombre entre 1 et 100.") # Instructions pour l'utilisateur
 
-while True:
-    # On demande un nombre (et on le convertit en entier)
-    proposition = int(input("Ta proposition : "))
-    essais = essais + 1
+while True:                                 # Démarre une boucle infinie (continue jusqu'à ce que 'break' soit atteint)
+    # Tente d'exécuter le code suivant. Si une erreur de type (ValueError) survient, passe au bloc 'except'.
+    try:                                    
+        # Demande la proposition de l'utilisateur (texte) et tente de la convertir en entier (int)
+        proposition = int(input("Ta proposition : ")) 
+    except ValueError:
+        print("Veuillez entrer un nombre valide.")  # Affiche un message d'erreur si la conversion en nombre a échoué
+        continue                                    # Ignore le reste du code dans cette itération et recommence la boucle (while True)
 
-    if proposition == nombre_secret:
-        print(f"Gagné ! Tu as trouvé en {essais} coups !")
-        break # On sort de la boucle, le jeu est fini
-    elif proposition < nombre_secret:
-        print("C'est plus grand ⬆️")
-    else:
-        print("C'est plus petit ⬇️")</code></pre>
+    essais += 1                                 # Incrémente le compteur d'essais de 1 (raccourci pour essais = essais + 1)
+
+    if proposition == nombre_secret:            # Condition de victoire : Si la proposition est strictement ÉGALE au nombre secret
+        # Affiche le message de victoire, utilisant une f-string pour insérer la variable 'essais'
+        print(f"Gagné ! Tu as trouvé en {essais} coups !") 
+        break                                   # Force la sortie de la boucle 'while True' (fin du jeu)
+    elif proposition < nombre_secret:           # Seconde condition (vérifiée si la première est fausse) : Si la proposition est PLUS PETITE que le secret
+        print("C'est plus grand ⬆️")             # Donne un indice
+    else:                                       # Condition par défaut (si proposition > nombre_secret)
+        print("C'est plus petit ⬇️")             # Donne un autre indice</code></pre>
                         <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
                     </div>
                     
                     <div class="book-ref">
                         <i class="fa-solid fa-code mr-2"></i> 
-                        <strong>Analyse du code :</strong>
+                        <strong>Concepts Utilisés :</strong>
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
-                            <li><code>import random</code> : Apporte les fonctions de hasard (Chapitre 10 de <em>Python pour les Nuls</em>).</li>
-                            <li><code>while True</code> : Crée une boucle infinie qui ne s'arrête que si on gagne (<code>break</code>).</li>
-                            <li><code>int(...)</code> : Convertit le texte tapé par le joueur en nombre pour pouvoir le comparer.</li>
+                            <li><code class="language-python">random.randint(a, b)</code> : Génère un entier aléatoire entre `a` et `b` (inclus).</li>
+                            <li><code class="language-python">while True</code> : Crée une boucle qui s'exécutera indéfiniment jusqu'à ce que `break` soit rencontré.</li>
+                            <li><code class="language-python">try/except</code> : Mécanisme de sécurité pour gérer les erreurs (ici, si l'utilisateur ne rentre pas un nombre).</li>
                         </ul>
                     </div>
                 </div>
@@ -208,136 +508,275 @@ while True:
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <section id="tools" class="mb-20 scroll-mt-24 relative">
+        <!-- Section 9: Projet 2 - Calculette de Base -->
+        <section id="project2" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
-                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">4</div>
-                <h2 class="text-3xl font-bold text-slate-900">Les Outils Essentiels <i class="fa-solid fa-screwdriver-wrench text-blue-400 ml-2"></i></h2>
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">9</div>
+                <h2 class="text-3xl font-bold text-slate-900">Projet 2 : Calculatrice de Base (Console)</h2>
             </div>
-            
-            <div class="ml-0 md:ml-8 grid gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-green-100 text-green-700 p-2 rounded-lg mr-3 text-sm">print()</span> Afficher à l'écran</h3>
-                    <p class="mb-4 text-slate-600">La fonction <code class="language-python">print()</code> est votre façon de "parler" à l'utilisateur. Elle affiche du texte (entouré de guillemets) ou le contenu d'une variable.</p>
-                    <pre><code class="language-python">message = "Bonjour le monde !"
-print(message) 
-print("Mon âge est :", 30) # Affiche plusieurs choses à la suite
-# Résultat : Bonjour le monde !
-# Résultat : Mon âge est : 30</code></pre>
-                </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-terminal mr-3 text-slate-700"></i> Le Terminal (CMD ou PowerShell)</h3>
-                    <p class="mb-4 text-slate-600">Le **Terminal** (ou <span class="cmd">Command Prompt</span> sur Windows, ou <span class="cmd">Terminal</span> sur Mac/Linux) est l'endroit où vous pouvez lancer vos scripts Python directement. C'est l'interface texte de votre ordinateur.</p>
-                    <p class="mb-4 font-semibold">Comment exécuter votre jeu de devinette :</p>
-                    <ul class="space-y-2 text-slate-600 mb-4">
-                        <li>1. Sauvegardez votre code dans un fichier, par exemple <span class="cmd">jeu_devinette.py</span>.</li>
-                        <li>2. Ouvrez votre Terminal (CMD).</li>
-                        <li>3. Allez dans le dossier où vous avez sauvegardé le fichier (commande <span class="cmd">cd votre_dossier</span>).</li>
-                        <li>4. Lancez le script :</li>
-                    </ul>
-                    <pre><code class="language-bash">python jeu_devinette.py</code></pre>
-                </div>
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-red-100 p-3 rounded-full text-red-600 mr-4">
+                            <i class="fa-solid fa-calculator text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">L'Objectif</h3>
+                            <p class="text-slate-600">Utiliser les **fonctions** pour organiser le code et le rendre modulaire.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet (Ligne par Ligne) :</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python"># --- CALCULATRICE DE BASE ---
+
+# 1. Définition des fonctions pour chaque opération (réutilisabilité)
+def addition(x, y):             # Définit la fonction 'addition' qui prend deux arguments 'x' et 'y'
+    return x + y                # Renvoie la somme de x et y
+
+def soustraction(x, y):         # Définit la fonction 'soustraction'
+    return x - y                # Renvoie la différence entre x et y
+
+def multiplication(x, y):       # Définit la fonction 'multiplication'
+    return x * y                # Renvoie le produit de x et y
+
+def division(x, y):             # Définit la fonction 'division'
+    if y == 0:                  # Vérifie si le diviseur 'y' est égal à zéro (division par zéro est impossible)
+        return "Erreur: Division par zéro impossible." # Si vrai, renvoie un message d'erreur (texte/string)
+    return x / y                # Sinon, renvoie le résultat de la division (nombre/float)
+
+def calculer():                 # Définit la fonction principale qui gère la boucle du programme
+    print("\n--- CALCULATRICE SIMPLE ---") # Affiche le titre
+    print("Sélectionnez une opération:")   # Affiche le menu
+    print("1. Addition")
+    print("2. Soustraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Quitter")
+
+    while True:                 # Boucle infinie pour permettre des calculs successifs
+        choix = input("Entrez votre choix (1/2/3/4/5): ") # Demande le choix de l'opération
+
+        if choix == '5':        # Si l'utilisateur choisit 5 (Quitter)
+            print("Au revoir!") 
+            break               # Sort de la boucle (fin du programme)
+
+        # Vérifie si le choix est une des opérations valides
+        if choix in ('1', '2', '3', '4'): 
+            try:
+                # Demande des deux nombres et conversion en float (pour gérer les décimales)
+                num1 = float(input("Entrez le premier nombre: "))
+                num2 = float(input("Entrez le deuxième nombre: "))
+            except ValueError:
+                print("Entrée invalide. Veuillez entrer des nombres.") # Gestion d'erreur si l'utilisateur n'entre pas de nombre
+                continue                                            # Recommence la boucle
+
+            # Aiguillage du programme vers la bonne fonction en fonction du choix
+            if choix == '1':
+                resultat = addition(num1, num2)     # Appelle la fonction 'addition'
+            elif choix == '2':
+                resultat = soustraction(num1, num2) # Appelle la fonction 'soustraction'
+            elif choix == '3':
+                resultat = multiplication(num1, num2)# Appelle la fonction 'multiplication'
+            elif choix == '4':
+                resultat = division(num1, num2)     # Appelle la fonction 'division'
                 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-box-open mr-3 text-orange-500"></i> Installer des "Boîtes à outils" avec pip et pyLab</h3>
-                    
-                    <h4 class="font-bold text-slate-800 mb-2">Qu'est-ce que <span class="cmd">pip</span> ?</h4>
-                    <p class="mb-4 text-slate-600"><span class="cmd">pip</span> est un outil magique qui permet d'installer des bibliothèques (des "boîtes à outils" supplémentaires) créées par d'autres programmeurs. Par exemple, si vous voulez dessiner des graphiques, vous avez besoin de la bibliothèque <span class="cmd">matplotlib</span>.</p>
-                    <p class="mb-4 font-semibold">Exemple d'utilisation de pip dans le Terminal :</p>
-                    <pre><code class="language-bash">pip install matplotlib</code></pre>
+                # Vérifie si le résultat de la division est le message d'erreur (type string)
+                if isinstance(resultat, str): 
+                    print(resultat)
+                    continue                        # Recommence la boucle car l'opération a échoué
 
-                    <h4 class="font-bold text-slate-800 mt-6 mb-2">Et <span class="cmd">pyLab</span> ?</h4>
-                    <p class="mb-4 text-slate-600"><span class="cmd">pyLab</span> est en fait un module à l'intérieur de la bibliothèque <span class="cmd">matplotlib</span>, très populaire dans le domaine scientifique. Il simplifie les commandes pour faire des calculs et afficher des graphiques rapidement. C'est votre porte d'entrée vers l'analyse de données et l'IA !</p>
-                    <pre><code class="language-python"># Exemple d'utilisation dans un script Python (après 'pip install matplotlib')
-import pylab as plt
+            print(f"Résultat: {resultat}")          # Affiche le résultat du calcul
+        else:
+            print("Choix invalide.")                # Message d'erreur si le choix n'est pas 1, 2, 3, 4 ou 5
 
-plt.plot([1, 2, 3], [1, 4, 9]) # Dessine une ligne
-plt.title("Mon premier graphique")
-plt.show()</code></pre>
+# Appel de la fonction principale pour démarrer la calculatrice
+calculer()
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref">
+                        <i class="fa-solid fa-code mr-2"></i> 
+                        <strong>Concepts Avancés :</strong>
+                        <ul class="mt-2 space-y-1 ml-6 list-disc">
+                            <li><code class="language-python">float()</code> : Convertit une chaîne de caractères en nombre à virgule flottante (nombre décimal).</li>
+                            <li><code class="language-python">isinstance(objet, type)</code> : Fonction qui vérifie si un objet est d'un type spécifique.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <section id="symbols" class="mb-20 scroll-mt-24 relative">
+        <!-- Section 10: Projet 3 - Carnet d'Adresses -->
+        <section id="project3" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
-                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">5</div>
-                <h2 class="text-3xl font-bold text-slate-900">Le Langage : Quand utiliser quel symbole ? <i class="fa-solid fa-pen-nib text-blue-400 ml-2"></i></h2>
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">10</div>
+                <h2 class="text-3xl font-bold text-slate-900">Projet 3 : Carnet d'Adresses Simple (Console)</h2>
             </div>
 
-            <div class="ml-0 md:ml-8 grid gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-yellow-100 text-yellow-700 p-2 rounded-lg mr-3 text-sm">"" ou ''</span> Les Guillemets</h3>
-                    <p class="mb-4 text-slate-600">Les guillemets simples (<code>' '</code>) ou doubles (<code>" "</code>) servent à délimiter du **texte pur** (appelé `string`). Python n'essaiera pas d'interpréter ce qui se trouve à l'intérieur comme du code. L'important est d'utiliser la même paire :</p>
-                    <pre><code class="language-python"># Correct :
-nom = "Alice" 
-phrase = 'J\'aime Python' 
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-indigo-100 p-3 rounded-full text-indigo-600 mr-4">
+                            <i class="fa-solid fa-address-book text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">L'Objectif</h3>
+                            <p class="text-slate-600">Maîtriser l'imbrication des structures de données : une **Liste** (le carnet) contenant plusieurs **Dictionnaires** (chaque contact).</p>
+                        </div>
+                    </div>
 
-# Erreur (mixte) :
-# mauvaise_phrase = "Je suis " Bob' </code></pre>
-                </div>
+                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet (Ligne par Ligne) :</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python"># --- CARNET D'ADRESSES (Liste de Dictionnaires) ---
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-red-100 text-red-700 p-2 rounded-lg mr-3 text-sm">()</span> Les Parenthèses</h3>
-                    <p class="mb-4 text-slate-600">Elles ont deux rôles principaux :</p>
-                    <ul class="list-disc ml-6 space-y-2 text-slate-600">
-                        <li>**Appeler une fonction :** Quand on demande à une fonction de travailler (<code class="language-python">print()</code>, <code class="language-python">input()</code>, <code class="language-python">random.randint()</code>).</li>
-                        <li>**Définir l'ordre de priorité :** Comme en mathématiques (ex: <code class="language-python">resultat = (10 + 5) * 2</code>).</li>
-                        <li>**Créer un `tuple` :** Une liste qui ne peut pas être modifiée après sa création.</li>
-                    </ul>
-                </div>
+# 1. La structure de données principale (Liste de Dictionnaires)
+contacts = [                            # Début de la liste 'contacts'
+    {                                   # Début du premier dictionnaire (contact)
+        "nom": "Alice Dupont",          # Paire Clé:Valeur (Clé: nom, Valeur: Alice Dupont)
+        "telephone": "0612345678",      # Deuxième paire
+        "email": "alice@email.com"      # Troisième paire
+    },                                  # Fin du dictionnaire
+    # ... on pourrait ajouter d'autres dictionnaires ici ...
+]                                       # Fin de la liste
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">[] et {}</span> Crochets et Accolades</h3>
-                    <ul class="list-disc ml-6 space-y-3 text-slate-600">
-                        <li>**Crochets `[]` :** Utilisés pour les **Listes** (collections d'éléments modifiables) et pour accéder à un élément précis dans une liste (<code class="language-python">ma_liste[0]</code>).</li>
-                        <li>**Accolades `{}` :** Utilisées pour les **Dictionnaires** (pour stocker des informations sous forme de paires clé:valeur) et les **Ensembles**.</li>
-                    </ul>
-                    <pre><code class="language-python">ma_liste = ["pomme", "banane"] # Crochets
-mon_profil = {"nom": "Bob", "age": 25} # Accolades</code></pre>
+def afficher_contacts(liste):           # Définit la fonction 'afficher_contacts', qui prend la 'liste' en argument
+    """Affiche tous les contacts de la liste.""" # Docstring (description de la fonction)
+    print("\n--- LISTE DES CONTACTS ---") # Affichage titre
+
+    # La fonction enumerate() retourne à la fois l'index (i) et l'élément (contact) pendant l'itération
+    for i, contact in enumerate(liste): 
+        print(f"\nContact #{i + 1}")    # Affiche le numéro du contact (i + 1 car l'index 'i' commence à 0)
+        
+        # Accède aux valeurs du dictionnaire 'contact' par leur clé (entre crochets [])
+        print(f"  Nom: {contact['nom']}") 
+        print(f"  Tél: {contact['telephone']}")
+        print(f"  Email: {contact['email']}")
+    print("--------------------------\n") # Séparateur
+
+# 2. Saisie des données du nouveau contact
+nouveau_nom = input("Nom du nouveau contact : ")
+nouveau_tel = input("Téléphone du nouveau contact : ")
+nouveau_email = input("Email du nouveau contact : ")
+
+nouveau_contact = {                     # Création d'un nouveau Dictionnaire avec les données saisies
+    "nom": nouveau_nom,
+    "telephone": nouveau_tel,
+    "email": nouveau_email
+}
+
+contacts.append(nouveau_contact)        # Ajout du nouveau Dictionnaire à la Liste 'contacts'
+
+# 3. Affichage après l'ajout
+afficher_contacts(contacts)             # Appelle la fonction d'affichage avec la liste mise à jour
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref">
+                        <i class="fa-solid fa-code mr-2"></i> 
+                        <strong>Concept Clé : Imbrication</strong>
+                        <p>Imaginez que le carnet soit un tiroir (`List`). Chaque contact est un classeur (`Dictionary`) dans le tiroir. Pour trouver le nom, vous cherchez la clé "nom" dans le classeur.</p>
+                    </div>
                 </div>
             </div>
         </section>
-
+        
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <section id="shortcuts" class="mb-20 scroll-mt-24 relative">
+        <!-- Section 11: Projet 4 - Tkinter Calculette de Température -->
+        <section id="project4" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
-                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">6</div>
-                <h2 class="text-3xl font-bold text-slate-900">Raccourcis Clavier : Gagnez du Temps ! <i class="fa-solid fa-keyboard text-blue-400 ml-2"></i></h2>
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">11</div>
+                <h2 class="text-3xl font-bold text-slate-900">Projet 4 : Convertisseur de Température (GUI Tkinter)</h2>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 ml-0 md:ml-8">
-                <p class="text-lg mb-6">Ces raccourcis fonctionnent dans la plupart des éditeurs de code comme **IDLE**, Visual Studio Code, ou d'autres.</p>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-slate-800 mb-2">Commandes Essentielles</h4>
-                        <ul class="space-y-3 text-slate-700">
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + S</span> : **Sauvegarder** le fichier.</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">F5</span> (dans IDLE) : **Exécuter** le script.</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + C</span> : **Copier** le texte sélectionné.</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + V</span> : **Coller** le texte.</li>
-                        </ul>
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-purple-100 p-3 rounded-full text-purple-600 mr-4">
+                            <i class="fa-solid fa-thermometer-half text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">L'Objectif</h3>
+                            <p class="text-slate-600">Appliquer les bases de Tkinter (Fenêtre, Label, Entry, Button) pour créer une application fonctionnelle.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-slate-800 mb-2">Productivité & Débogage</h4>
-                        <ul class="space-y-3 text-slate-700">
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + Z</span> : **Annuler** la dernière action.</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + F</span> : **Rechercher** un mot dans le fichier.</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + /</span> : **Commenter/Décommenter** une ligne de code (très pratique pour désactiver une ligne temporairement).</li>
-                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Tab / Shift + Tab</span> : **Indenter** (décaler) le code (essentiel en Python).</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="book-ref">
-                    <i class="fa-solid fa-lightbulb mr-2"></i>
-                    <strong>Astuce Indentation :</strong> En Python, l'**indentation** (les espaces au début d'une ligne) est cruciale pour définir les blocs de code (<span class="cmd">if</span>, <span class="cmd">else</span>, <span class="cmd">while</span>). Utilisez la touche <span class="cmd">Tab</span> ou **4 espaces** pour indenter.
+                    <h4 class="font-bold text-slate-800 mb-3">Le Code Complet (Ligne par Ligne) :</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python"># --- CONVERTISSEUR DE TEMPÉRATURE AVEC TKINTER ---
+
+import tkinter as tk                                # Importe la librairie Tkinter et utilise le raccourci 'tk'
+from tkinter import messagebox                      # Importe spécifiquement le module messagebox (pour les popups)
+
+# 1. Définition de la logique (la fonction qui est déclenchée par le bouton)
+def celsius_vers_fahrenheit():                      # Définit la fonction de conversion
+    try:                                            # Démarre la gestion d'erreur
+        # entry_celsius.get() : Récupère le texte du champ de saisie et le convertit en nombre décimal (float)
+        celsius = float(entry_celsius.get())        
+        
+        # Formule de conversion : F = C * 9/5 + 32
+        fahrenheit = (celsius * 9/5) + 32
+        
+        # .config() met à jour le texte du Label de résultat avec la réponse
+        # :.2f formate le nombre pour n'afficher que deux décimales
+        result_label.config(text=f"Résultat: {celsius}°C = {fahrenheit:.2f}°F", fg="blue")
+        
+    except ValueError:                              # Si l'utilisateur a saisi du texte au lieu d'un nombre (erreur de conversion float())
+        # Affiche une boîte d'alerte graphique pour l'erreur
+        messagebox.showerror("Erreur de Saisie", "Veuillez entrer un nombre valide pour la température.")
+
+# 2. Création de la fenêtre principale
+root = tk.Tk()                                      # Crée l'objet Fenêtre principale
+root.title("Convertisseur C°/F°")                   # Définit le titre de la fenêtre
+root.geometry("300x150")                            # Définit la taille
+
+# 3. Création et Placement des Widgets
+# Label pour l'instruction
+label_celsius = tk.Label(root, text="Température en Celsius (°C):") 
+label_celsius.pack(pady=5)                          # Place le Label
+
+# Champ de Saisie (Entry)
+entry_celsius = tk.Entry(root)                      # Crée le champ de saisie
+entry_celsius.pack(pady=5)                          # Place le champ de saisie
+
+# Bouton de Conversion
+convert_button = tk.Button(
+    root, 
+    text="Convertir", 
+    command=celsius_vers_fahrenheit,                # Lie le clic du bouton à la fonction de conversion (SANS parenthèses)
+    bg="#2563eb", 
+    fg="white"
+)
+convert_button.pack(pady=10)                        # Place le bouton
+
+# Label pour le Résultat
+result_label = tk.Label(root, text="Résultat: -")
+result_label.pack(pady=5)                           # Place le Label de résultat
+
+# 4. Lancement de la boucle principale
+root.mainloop()                                     # Démarre le moteur graphique Tkinter (la fenêtre apparaît et attend les interactions)
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref">
+                        <i class="fa-solid fa-code mr-2"></i> 
+                        <strong>Fonctions et Widgets :</strong>
+                        <ul class="mt-2 space-y-1 ml-6 list-disc">
+                            <li><code class="language-python">tk.Tk()</code> : La classe de base pour toutes les applications Tkinter.</li>
+                            <li><code class="language-python">tk.Entry()</code> : Un champ de texte pour que l'utilisateur puisse saisir des données.</li>
+                            <li><code class="language-python">.get()</code> : La méthode essentielle pour extraire le texte saisi dans un `Entry`.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -352,8 +791,9 @@ mon_profil = {"nom": "Bob", "age": 25} # Accolades</code></pre>
     </footer>
 
     <script>
-        // Fonction de copie de code (existante)
+        // Fonction de copie de code 
         window.copyCode = (btn) => {
+            // Récupère le contenu du bloc <pre> parent
             const code = btn.previousElementSibling.innerText;
             const textarea = document.createElement('textarea');
             textarea.value = code;
@@ -367,7 +807,7 @@ mon_profil = {"nom": "Bob", "age": 25} # Accolades</code></pre>
             setTimeout(() => btn.innerText = originalText, 2000);
         }
 
-        // NOUVELLE FONCTION POUR LE SÉLECTEUR D'OS
+        // Fonction pour le sélecteur d'OS
         window.selectOS = (os) => {
             // Cacher toutes les instructions
             document.querySelectorAll('.os-instructions').forEach(el => el.classList.add('hidden'));
