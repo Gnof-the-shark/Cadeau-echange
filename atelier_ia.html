@@ -28,7 +28,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Navigation Commune -->
     <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -49,10 +48,8 @@
 
     <main class="max-w-5xl mx-auto px-4 py-12">
         
-        <!-- SECTION IA -->
         <section id="ai-lab" class="scroll-mt-24">
             <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl text-white relative overflow-hidden">
-                <!-- Décoration -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
                 
                 <div class="relative z-10 text-center mb-12">
@@ -61,13 +58,15 @@
                         <span class="font-bold text-lg">Atelier IA Gemini</span>
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Votre Assistant Personnel de Code</h2>
-                    <p class="text-slate-300 max-w-xl mx-auto">Utilisez l'intelligence artificielle pour aller plus loin. Choisissez un outil ci-dessous.</p>
-                </div>
+                    <p class="text-slate-300 max-w-xl mx-auto mb-6">Utilisez l'intelligence artificielle pour aller plus loin. Choisissez un outil ci-dessous, ou accédez directement au guide IA sur la plateforme Gemini.</p>
+                    
+                    <a href="https://gemini.google.com/gem/1hj3UptOtZScqiAvJt8qml2uAJHpVkL2e?usp=sharing" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm shadow-md transition duration-300">
+                        <i class="fa-solid fa-star mr-2"></i> Accéder au Guide IA Personnalisé (Gemini)
+                    </a>
+                    </div>
 
-                <!-- Grille des outils IA -->
                 <div class="grid md:grid-cols-2 gap-6 relative z-10">
                     
-                    <!-- Outil 1: Explicateur -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('explainer')">
                         <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
                              <i class="fa-solid fa-code text-blue-400 text-xl"></i> 
@@ -76,7 +75,6 @@
                         <p class="text-sm text-slate-400">Collez un bout de code que vous ne comprenez pas, et l'IA vous l'expliquera ligne par ligne.</p>
                     </div>
 
-                    <!-- Outil 2: Idées -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('ideas')">
                         <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-lightbulb text-purple-400 text-xl"></i>
@@ -85,7 +83,6 @@
                         <p class="text-sm text-slate-400">En panne d'inspiration ? Obtenez une idée de projet adaptée à votre niveau.</p>
                     </div>
 
-                    <!-- Outil 3: Quiz -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('quiz')">
                         <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-puzzle-piece text-green-400 text-xl"></i>
@@ -94,7 +91,6 @@
                         <p class="text-sm text-slate-400">Testez vos connaissances immédiatement avec une question générée par l'IA.</p>
                     </div>
 
-                    <!-- Outil 4: Correcteur (NOUVEAU) -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('corrector')">
                         <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-bug text-orange-400 text-xl"></i>
@@ -104,10 +100,8 @@
                     </div>
                 </div>
 
-                <!-- Zone d'interaction dynamique -->
                 <div id="tool-interface" class="mt-8 bg-slate-800/50 rounded-2xl border border-white/10 p-6 hidden">
                     
-                    <!-- Interface Explicateur -->
                     <div id="ui-explainer" class="hidden tool-ui">
                         <label class="block text-sm font-medium text-slate-300 mb-2">Collez votre code Python à expliquer :</label>
                         <textarea id="codeToExplain" rows="4" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-sm font-mono text-blue-300 focus:ring-2 focus:ring-blue-500 outline-none transition mb-4" placeholder="print('Hello World')..."></textarea>
@@ -116,7 +110,6 @@
                         </button>
                     </div>
 
-                    <!-- Interface Correcteur (NOUVEAU) -->
                     <div id="ui-corrector" class="hidden tool-ui">
                         <label class="block text-sm font-medium text-slate-300 mb-2">Collez votre code qui plante ici :</label>
                         <textarea id="codeToCorrect" rows="4" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-sm font-mono text-orange-300 focus:ring-2 focus:ring-orange-500 outline-none transition mb-4" placeholder="if x = 5: print('Erreur')..."></textarea>
@@ -125,7 +118,6 @@
                         </button>
                     </div>
 
-                    <!-- Interface Idées -->
                     <div id="ui-ideas" class="hidden tool-ui">
                         <label class="block text-sm font-medium text-slate-300 mb-2">Vos centres d'intérêt (ex: jeux, maths, texte) :</label>
                         <div class="flex gap-3">
@@ -136,7 +128,6 @@
                         </div>
                     </div>
 
-                    <!-- Interface Quiz -->
                     <div id="ui-quiz" class="hidden tool-ui text-center">
                         <p class="text-slate-300 mb-6">Prêt pour un défi ? L'IA va générer une question sur les bases de Python.</p>
                         <button onclick="runAI('quiz')" class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-lg font-medium transition flex items-center mx-auto text-lg">
@@ -144,7 +135,6 @@
                         </button>
                     </div>
 
-                    <!-- Zone de Résultat -->
                     <div id="ai-result-container" class="mt-6 pt-6 border-t border-white/10 hidden">
                         <div class="flex items-center mb-4 text-blue-400">
                             <i class="fa-solid fa-robot mr-2"></i>
@@ -153,7 +143,6 @@
                         <div id="ai-output" class="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed"></div>
                     </div>
                     
-                    <!-- Loader -->
                     <div id="ai-loader" class="hidden text-center py-8">
                         <div class="flex justify-center items-center space-x-1 text-blue-400">
                             <span class="typing-dot"></span>
