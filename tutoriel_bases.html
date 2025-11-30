@@ -15,11 +15,12 @@
         .cmd { background-color: #0f172a; color: #10b981; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.9em; }
         .nav-link { transition: color 0.2s; }
         .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
+        .os-btn { background-color: #f1f5f9; color: #475569; }
+        .os-btn.active { background-color: #2563eb; color: white; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Navigation Commune -->
     <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -29,7 +30,7 @@
                 </div>
                 <div class="flex items-center space-x-6">
                     <a href="index.html" class="text-slate-600 hover:text-blue-600 font-medium transition nav-link">Accueil</a>
-                    <a href="tutoriel_bases.html" class="text-blue-600 font-medium active nav-link border-blue-600">Tutoriel Python</a>
+                    <a href="#setup" class="text-blue-600 font-medium active nav-link border-blue-600">Tutoriel Python</a>
                     <a href="atelier_ia.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Atelier IA
                     </a>
@@ -40,7 +41,6 @@
 
     <main class="max-w-5xl mx-auto px-4 py-12">
         
-        <!-- En-tête -->
         <div class="text-center mb-20">
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Tutoriel : Les Bases et le Projet
@@ -50,31 +50,46 @@
             </p>
         </div>
 
-        <!-- Etape 1: Installation -->
         <section id="setup" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
                 <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">1</div>
-                <h2 class="text-3xl font-bold text-slate-900">Préparer le Terrain</h2>
+                <h2 class="text-3xl font-bold text-slate-900">Préparer le Terrain <i class="fa-solid fa-laptop-code text-blue-400 ml-2"></i></h2>
             </div>
             
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 ml-0 md:ml-8">
                 <p class="text-lg mb-6">Pour parler à l'ordinateur, il nous faut un traducteur (Python) et un carnet de notes (IDLE). Ne vous inquiétez pas, c'est gratuit.</p>
                 
-                <div class="grid md:grid-cols-2 gap-8">
+                <p class="font-semibold mb-3">Choisissez votre système d'exploitation :</p>
+                <div class="flex space-x-4 mb-8 border-b pb-4">
+                    <button id="btn-win" onclick="selectOS('win')" class="os-btn flex items-center px-4 py-2 rounded-lg font-bold transition">
+                        <i class="fa-brands fa-windows mr-2"></i> Windows
+                    </button>
+                    <button id="btn-mac" onclick="selectOS('mac')" class="os-btn flex items-center px-4 py-2 rounded-lg font-bold transition">
+                        <i class="fa-brands fa-apple mr-2"></i> Mac OS
+                    </button>
+                </div>
+
+                <div id="instructions-win" class="os-instructions">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center"><i class="fa-brands fa-windows mr-2 text-blue-500"></i> Windows</h3>
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><i class="fa-brands fa-windows mr-2 text-blue-500"></i> Windows</h3>
                         <ul class="space-y-3 text-slate-600">
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Allez sur <a href="https://python.org" target="_blank" class="text-blue-600 underline">python.org</a>.</li>
-                            <li class="flex items-start"><i class="fa-solid fa-circle-exclamation text-amber-500 mt-1 mr-2"></i> <strong>TRÈS IMPORTANT :</strong> Cochez la case <span class="cmd">Add Python to PATH</span> au début de l'installation.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-exclamation text-amber-500 mt-1 mr-2"></i> <strong>TRÈS IMPORTANT :</strong> Cochez la case <span class="cmd">Add Python to PATH</span> au début de l'installation. Ceci permet d'utiliser facilement la <span class="cmd">CMD</span>.</li>
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cliquez sur "Install Now".</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Après l'installation, tapez <span class="cmd">IDLE</span> dans le menu démarrer pour commencer à coder.</li>
                         </ul>
                     </div>
+                </div>
+
+                <div id="instructions-mac" class="os-instructions hidden">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center"><i class="fa-brands fa-apple mr-2 text-slate-800"></i> Mac OS</h3>
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><i class="fa-brands fa-apple mr-2 text-slate-800"></i> Mac OS</h3>
                         <ul class="space-y-3 text-slate-600">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Téléchargez la dernière version macOS sur python.org.</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Une fois installé, cherchez l'application <strong>IDLE</strong> dans votre Launchpad pour coder.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Téléchargez la dernière version macOS sur python.org (fichier <span class="cmd">.pkg</span>).</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Double-cliquez pour suivre les étapes d'installation.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cherchez l'application <strong>IDLE</strong> dans votre Launchpad pour votre carnet de notes.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-terminal text-blue-500 mt-1 mr-2"></i> Le Terminal est prêt. Vous pouvez taper <span class="cmd">python3</span> dans le Terminal pour vérifier.</li>
                         </ul>
                     </div>
                 </div>
@@ -90,7 +105,8 @@
             </div>
         </section>
 
-        <!-- Etape 2: Logique -->
+        <hr class="border-t-2 border-slate-200 my-16">
+
         <section id="logic" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -99,7 +115,6 @@
             </div>
 
             <div class="ml-0 md:ml-8 grid gap-8">
-                <!-- Concept 1 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-blue-100 text-blue-700 p-2 rounded-lg mr-3 text-sm">Concept A</span>
@@ -114,7 +129,6 @@ joueur = input("Quel est ton nom ? ")
 print(f"Enchanté, {joueur} !")</code></pre>
                 </div>
 
-                <!-- Concept 2 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">Concept B</span>
@@ -133,7 +147,8 @@ else:
             </div>
         </section>
 
-        <!-- Etape 3: Projet -->
+        <hr class="border-t-2 border-slate-200 my-16">
+        
         <section id="project" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -179,7 +194,6 @@ while True:
                     </div>
                     
                     <div class="book-ref">
-                        <!-- ICÔNE DE CODE GÉNÉRIQUE -->
                         <i class="fa-solid fa-code mr-2"></i> 
                         <strong>Analyse du code :</strong>
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
@@ -192,6 +206,142 @@ while True:
             </div>
         </section>
 
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <section id="tools" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">4</div>
+                <h2 class="text-3xl font-bold text-slate-900">Les Outils Essentiels <i class="fa-solid fa-screwdriver-wrench text-blue-400 ml-2"></i></h2>
+            </div>
+            
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-green-100 text-green-700 p-2 rounded-lg mr-3 text-sm">print()</span> Afficher à l'écran</h3>
+                    <p class="mb-4 text-slate-600">La fonction <code class="language-python">print()</code> est votre façon de "parler" à l'utilisateur. Elle affiche du texte (entouré de guillemets) ou le contenu d'une variable.</p>
+                    <pre><code class="language-python">message = "Bonjour le monde !"
+print(message) 
+print("Mon âge est :", 30) # Affiche plusieurs choses à la suite
+# Résultat : Bonjour le monde !
+# Résultat : Mon âge est : 30</code></pre>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-terminal mr-3 text-slate-700"></i> Le Terminal (CMD ou PowerShell)</h3>
+                    <p class="mb-4 text-slate-600">Le **Terminal** (ou <span class="cmd">Command Prompt</span> sur Windows, ou <span class="cmd">Terminal</span> sur Mac/Linux) est l'endroit où vous pouvez lancer vos scripts Python directement. C'est l'interface texte de votre ordinateur.</p>
+                    <p class="mb-4 font-semibold">Comment exécuter votre jeu de devinette :</p>
+                    <ul class="space-y-2 text-slate-600 mb-4">
+                        <li>1. Sauvegardez votre code dans un fichier, par exemple <span class="cmd">jeu_devinette.py</span>.</li>
+                        <li>2. Ouvrez votre Terminal (CMD).</li>
+                        <li>3. Allez dans le dossier où vous avez sauvegardé le fichier (commande <span class="cmd">cd votre_dossier</span>).</li>
+                        <li>4. Lancez le script :</li>
+                    </ul>
+                    <pre><code class="language-bash">python jeu_devinette.py</code></pre>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-box-open mr-3 text-orange-500"></i> Installer des "Boîtes à outils" avec pip et pyLab</h3>
+                    
+                    <h4 class="font-bold text-slate-800 mb-2">Qu'est-ce que <span class="cmd">pip</span> ?</h4>
+                    <p class="mb-4 text-slate-600"><span class="cmd">pip</span> est un outil magique qui permet d'installer des bibliothèques (des "boîtes à outils" supplémentaires) créées par d'autres programmeurs. Par exemple, si vous voulez dessiner des graphiques, vous avez besoin de la bibliothèque <span class="cmd">matplotlib</span>.</p>
+                    <p class="mb-4 font-semibold">Exemple d'utilisation de pip dans le Terminal :</p>
+                    <pre><code class="language-bash">pip install matplotlib</code></pre>
+
+                    <h4 class="font-bold text-slate-800 mt-6 mb-2">Et <span class="cmd">pyLab</span> ?</h4>
+                    <p class="mb-4 text-slate-600"><span class="cmd">pyLab</span> est en fait un module à l'intérieur de la bibliothèque <span class="cmd">matplotlib</span>, très populaire dans le domaine scientifique. Il simplifie les commandes pour faire des calculs et afficher des graphiques rapidement. C'est votre porte d'entrée vers l'analyse de données et l'IA !</p>
+                    <pre><code class="language-python"># Exemple d'utilisation dans un script Python (après 'pip install matplotlib')
+import pylab as plt
+
+plt.plot([1, 2, 3], [1, 4, 9]) # Dessine une ligne
+plt.title("Mon premier graphique")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <section id="symbols" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">5</div>
+                <h2 class="text-3xl font-bold text-slate-900">Le Langage : Quand utiliser quel symbole ? <i class="fa-solid fa-pen-nib text-blue-400 ml-2"></i></h2>
+            </div>
+
+            <div class="ml-0 md:ml-8 grid gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-yellow-100 text-yellow-700 p-2 rounded-lg mr-3 text-sm">"" ou ''</span> Les Guillemets</h3>
+                    <p class="mb-4 text-slate-600">Les guillemets simples (<code>' '</code>) ou doubles (<code>" "</code>) servent à délimiter du **texte pur** (appelé `string`). Python n'essaiera pas d'interpréter ce qui se trouve à l'intérieur comme du code. L'important est d'utiliser la même paire :</p>
+                    <pre><code class="language-python"># Correct :
+nom = "Alice" 
+phrase = 'J\'aime Python' 
+
+# Erreur (mixte) :
+# mauvaise_phrase = "Je suis " Bob' </code></pre>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-red-100 text-red-700 p-2 rounded-lg mr-3 text-sm">()</span> Les Parenthèses</h3>
+                    <p class="mb-4 text-slate-600">Elles ont deux rôles principaux :</p>
+                    <ul class="list-disc ml-6 space-y-2 text-slate-600">
+                        <li>**Appeler une fonction :** Quand on demande à une fonction de travailler (<code class="language-python">print()</code>, <code class="language-python">input()</code>, <code class="language-python">random.randint()</code>).</li>
+                        <li>**Définir l'ordre de priorité :** Comme en mathématiques (ex: <code class="language-python">resultat = (10 + 5) * 2</code>).</li>
+                        <li>**Créer un `tuple` :** Une liste qui ne peut pas être modifiée après sa création.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">[] et {}</span> Crochets et Accolades</h3>
+                    <ul class="list-disc ml-6 space-y-3 text-slate-600">
+                        <li>**Crochets `[]` :** Utilisés pour les **Listes** (collections d'éléments modifiables) et pour accéder à un élément précis dans une liste (<code class="language-python">ma_liste[0]</code>).</li>
+                        <li>**Accolades `{}` :** Utilisées pour les **Dictionnaires** (pour stocker des informations sous forme de paires clé:valeur) et les **Ensembles**.</li>
+                    </ul>
+                    <pre><code class="language-python">ma_liste = ["pomme", "banane"] # Crochets
+mon_profil = {"nom": "Bob", "age": 25} # Accolades</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <section id="shortcuts" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">6</div>
+                <h2 class="text-3xl font-bold text-slate-900">Raccourcis Clavier : Gagnez du Temps ! <i class="fa-solid fa-keyboard text-blue-400 ml-2"></i></h2>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 ml-0 md:ml-8">
+                <p class="text-lg mb-6">Ces raccourcis fonctionnent dans la plupart des éditeurs de code comme **IDLE**, Visual Studio Code, ou d'autres.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2">Commandes Essentielles</h4>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + S</span> : **Sauvegarder** le fichier.</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">F5</span> (dans IDLE) : **Exécuter** le script.</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + C</span> : **Copier** le texte sélectionné.</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + V</span> : **Coller** le texte.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2">Productivité & Débogage</h4>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + Z</span> : **Annuler** la dernière action.</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + F</span> : **Rechercher** un mot dans le fichier.</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Ctrl/Cmd + /</span> : **Commenter/Décommenter** une ligne de code (très pratique pour désactiver une ligne temporairement).</li>
+                            <li class="p-3 bg-slate-50 rounded-lg"><span class="cmd mr-2">Tab / Shift + Tab</span> : **Indenter** (décaler) le code (essentiel en Python).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="book-ref">
+                    <i class="fa-solid fa-lightbulb mr-2"></i>
+                    <strong>Astuce Indentation :</strong> En Python, l'**indentation** (les espaces au début d'une ligne) est cruciale pour définir les blocs de code (<span class="cmd">if</span>, <span class="cmd">else</span>, <span class="cmd">while</span>). Utilisez la touche <span class="cmd">Tab</span> ou **4 espaces** pour indenter.
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
@@ -202,9 +352,9 @@ while True:
     </footer>
 
     <script>
+        // Fonction de copie de code (existante)
         window.copyCode = (btn) => {
             const code = btn.previousElementSibling.innerText;
-            // Utilisation de document.execCommand('copy') pour la compatibilité avec l'environnement iFrame
             const textarea = document.createElement('textarea');
             textarea.value = code;
             document.body.appendChild(textarea);
@@ -216,6 +366,28 @@ while True:
             btn.innerText = "Copié !";
             setTimeout(() => btn.innerText = originalText, 2000);
         }
+
+        // NOUVELLE FONCTION POUR LE SÉLECTEUR D'OS
+        window.selectOS = (os) => {
+            // Cacher toutes les instructions
+            document.querySelectorAll('.os-instructions').forEach(el => el.classList.add('hidden'));
+            // Réinitialiser le style de tous les boutons
+            document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Afficher l'instruction et activer le bouton correspondant
+            if (os === 'win') {
+                document.getElementById('instructions-win').classList.remove('hidden');
+                document.getElementById('btn-win').classList.add('active');
+            } else if (os === 'mac') {
+                document.getElementById('instructions-mac').classList.remove('hidden');
+                document.getElementById('btn-mac').classList.add('active');
+            }
+        }
+
+        // Initialiser la sélection par défaut au chargement de la page (Windows par défaut)
+        document.addEventListener('DOMContentLoaded', () => {
+            selectOS('win'); 
+        });
     </script>
 </body>
 </html>
