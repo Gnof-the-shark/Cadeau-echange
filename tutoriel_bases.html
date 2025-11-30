@@ -26,6 +26,25 @@
         .nav-link.active { border-bottom: 2px solid; padding-bottom: 4px; }
         .os-btn { background-color: #f1f5f9; color: #475569; }
         .os-btn.active { background-color: #2563eb; color: white; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        /* STYLES POUR LA NAVIGATION FIXE */
+        .fixed-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1e293b; /* Couleur de fond foncée */
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+        .nav-button {
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -59,7 +78,6 @@
             </p>
         </div>
 
-        <!-- Section 1: Installation -->
         <section id="setup" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -85,7 +103,7 @@
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
                         <ul class="space-y-3 text-slate-600">
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Allez sur <a href="https://python.org" target="_blank" class="text-blue-600 underline">python.org</a>.</li>
-                            <li class="flex items-start"><i class="fa-solid fa-circle-exclamation text-amber-500 mt-1 mr-2"></i> <strong>TRÈS IMPORTANT :</strong> Cochez la case <span class="cmd">Add Python to PATH</span> au début de l'installation. Ceci permet d'utiliser facilement la <span class="cmd">CMD</span>.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-exclamation text-amber-500 mt-1 mr-2"></i> **TRÈS IMPORTANT :** Cochez la case <span class="cmd">Add Python to PATH</span> au début de l'installation. Ceci permet d'utiliser facilement la <span class="cmd">CMD</span>.</li>
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cliquez sur "Install Now".</li>
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Après l'installation, tapez <span class="cmd">IDLE</span> dans le menu démarrer pour commencer à coder.</li>
                         </ul>
@@ -98,7 +116,7 @@
                         <ul class="space-y-3 text-slate-600">
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Téléchargez la dernière version macOS sur python.org (fichier <span class="cmd">.pkg</span>).</li>
                             <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Double-cliquez pour suivre les étapes d'installation.</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cherchez l'application <strong>IDLE</strong> dans votre Launchpad pour votre carnet de notes.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Cherchez l'application **IDLE** dans votre Launchpad pour votre carnet de notes.</li>
                             <li class="flex items-start"><i class="fa-solid fa-terminal text-blue-500 mt-1 mr-2"></i> Le Terminal est prêt. Vous pouvez taper <span class="cmd">python3</span> dans le Terminal pour vérifier.</li>
                         </ul>
                     </div>
@@ -106,7 +124,7 @@
 
                 <div class="book-ref">
                     <i class="fa-solid fa-book-open mr-2"></i>
-                    <strong>Références pour l'installation :</strong>
+                    **Références pour l'installation :**
                     <ul class="mt-2 space-y-1 ml-6 list-disc">
                         <li>*Programmer en s'amusant avec Python pour les Nuls* : **Voir la Semaine 1, Projet 1** pour la première mise en place.</li>
                         <li>*Python pour les Nuls* : **Voir le Chapitre 2** (Obtenir votre copie de Python).</li>
@@ -117,7 +135,6 @@
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 2: Outils et Organisation -->
         <section id="tools" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -165,7 +182,6 @@ print(math.sqrt(16))          # Affiche le résultat de la fonction 'sqrt' (raci
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 3: Le Langage (Symbole) -->
         <section id="symbols" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -213,7 +229,6 @@ print(mon_dict["nom"])            # Les crochets sont utilisés pour ACCÉDER à
         
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 4: Logique de Base -->
         <section id="logic" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -222,7 +237,6 @@ print(mon_dict["nom"])            # Les crochets sont utilisés pour ACCÉDER à
             </div>
 
             <div class="ml-0 md:ml-8 grid gap-8">
-                <!-- Variables -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-blue-100 text-blue-700 p-2 rounded-lg mr-3 text-sm">A</span>
@@ -240,13 +254,12 @@ age = int(age_texte)                            # Le mot-clé int() convertit le
                     </div>
                 </div>
 
-                <!-- Conditions -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 text-sm">B</span>
                         Les Conditions : La Logique <code class="language-python">if</code>, <code class="language-python">elif</code>, <code class="language-python">else</code>
                     </h3>
-                    <p class="mb-4 text-slate-600">Ces mots-clés permettent au programme de prendre des décisions basées sur des comparaisons. [Image of flowchart for if elif else structure]</p>
+                    <p class="mb-4 text-slate-600">Ces mots-clés permettent au programme de prendre des décisions basées sur des comparaisons. [attachment_0](attachment)</p>
                     
                     <div class="concept-box">
                         <strong class="text-purple-700 block mb-2">Exemple Ligne par Ligne :</strong>
@@ -266,7 +279,6 @@ else:                                 # Ce bloc est la condition par défaut (si
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 5: Structures de Données -->
         <section id="structures" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -275,7 +287,6 @@ else:                                 # Ce bloc est la condition par défaut (si
             </div>
 
             <div class="ml-0 md:ml-8 grid gap-8">
-                <!-- Listes -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-green-100 text-green-700 p-2 rounded-lg mr-3 text-sm">A</span>
@@ -293,7 +304,6 @@ liste_courses.remove("lait")               # Recherche et retire la première oc
                     </div>
                 </div>
 
-                <!-- Dictionnaires -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-red-100 text-red-700 p-2 rounded-lg mr-3 text-sm">B</span>
@@ -318,7 +328,6 @@ profil["age"] = 29                   # Modifie la valeur associée à la clé "a
         
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 6: Boucles et Fonctions -->
         <section id="flow" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -327,13 +336,12 @@ profil["age"] = 29                   # Modifie la valeur associée à la clé "a
             </div>
 
             <div class="ml-0 md:ml-8 grid gap-8">
-                <!-- Boucles -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-yellow-100 text-yellow-700 p-2 rounded-lg mr-3 text-sm">A</span>
                         Les Boucles (<code class="language-python">for</code> et <code class="language-python">while</code>)
                     </h3>
-                    <p class="mb-4 text-slate-600">Les boucles servent à automatiser les tâches répétitives. [Image of programming loop flow chart]</p>
+                    <p class="mb-4 text-slate-600">Les boucles servent à automatiser les tâches répétitives. [attachment_1](attachment)</p>
                     
                     <h4 class="font-bold text-slate-800 mb-2">Boucle FOR (Itération) :</h4>
                     <div class="concept-box">
@@ -356,7 +364,6 @@ while i > 0:                              # Démarre la boucle WHILE : Tant que 
                     </div>
                 </div>
 
-                <!-- Fonctions -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3 text-sm">B</span>
@@ -380,7 +387,6 @@ print(a)                           # Affiche la valeur de 'a', soit 49.
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 7: Tkinter et GUI -->
         <section id="tkinter" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -428,7 +434,7 @@ fenetre.mainloop()                                   # OBLIGATOIRE : Lance le mo
 
                     <div class="book-ref bg-green-50 border-green-400 text-green-800">
                         <i class="fa-solid fa-desktop mr-2"></i>
-                        <strong>Points Clés Tkinter :</strong>
+                        **Points Clés Tkinter :**
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
                             <li><code class="language-python">.config()</code> : Utilisé pour modifier dynamiquement les propriétés d'un widget (comme le texte d'un `Label`) APRES sa création.</li>
                             <li><code class="language-python">command=saluer</code> : On lie le clic du bouton à la fonction `saluer`. **Jamais de `()` ici**.</li>
@@ -441,7 +447,6 @@ fenetre.mainloop()                                   # OBLIGATOIRE : Lance le mo
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 8: Projet 1 - Jeu de Devinette -->
         <section id="project1" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -495,7 +500,7 @@ while True:                                 # Démarre une boucle infinie (conti
                     
                     <div class="book-ref">
                         <i class="fa-solid fa-code mr-2"></i> 
-                        <strong>Concepts Utilisés :</strong>
+                        **Concepts Utilisés :**
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
                             <li><code class="language-python">random.randint(a, b)</code> : Génère un entier aléatoire entre `a` et `b` (inclus).</li>
                             <li><code class="language-python">while True</code> : Crée une boucle qui s'exécutera indéfiniment jusqu'à ce que `break` soit rencontré.</li>
@@ -508,7 +513,6 @@ while True:                                 # Démarre une boucle infinie (conti
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 9: Projet 2 - Calculette de Base -->
         <section id="project2" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
@@ -600,7 +604,7 @@ calculer()
 
                     <div class="book-ref">
                         <i class="fa-solid fa-code mr-2"></i> 
-                        <strong>Concepts Avancés :</strong>
+                        **Concepts Avancés :**
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
                             <li><code class="language-python">float()</code> : Convertit une chaîne de caractères en nombre à virgule flottante (nombre décimal).</li>
                             <li><code class="language-python">isinstance(objet, type)</code> : Fonction qui vérifie si un objet est d'un type spécifique.</li>
@@ -612,11 +616,135 @@ calculer()
 
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 10: Projet 3 - Carnet d'Adresses -->
+        <section id="opencv" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">10</div>
+                <h2 class="text-3xl font-bold text-slate-900">Vision par Ordinateur avec OpenCV</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-indigo-100 p-3 rounded-full text-indigo-600 mr-4">
+                            <i class="fa-solid fa-camera-retro text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Qu'est-ce qu'OpenCV ?</h3>
+                            <p class="text-slate-600">**OpenCV** est la bibliothèque standard pour traiter les images et les vidéos. Elle permet au programme de "voir" en lisant et manipulant des pixels.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-slate-800 mb-3 flex items-center"><i class="fa-solid fa-terminal mr-2 text-indigo-500"></i> Installation (dans le Terminal)</h4>
+                    <pre><code class="language-bash">pip install opencv-python # Installe le paquet 'opencv'</code></pre>
+
+                    <h4 class="font-bold text-slate-800 mt-6 mb-3">Code : Lire et Afficher une Image</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python">import cv2                                  # 1. Importe la librairie OpenCV (souvent nommée 'cv2')
+import os                                   # 2. Importe le module os pour gérer les chemins de fichiers
+
+# NOTE: Assurez-vous d'avoir une image nommée 'photo.jpg' dans le même dossier que votre script.
+
+chemin_image = 'photo.jpg'                  # Nom du fichier image à charger
+if not os.path.exists(chemin_image):
+    print("Erreur: Le fichier 'photo.jpg' n'a pas été trouvé.")
+else:
+    # 3. Lecture de l'image
+    image = cv2.imread(chemin_image, cv2.IMREAD_COLOR) # Charge l'image depuis le chemin. IMREAD_COLOR = image en couleur.
+
+    # 4. Affichage de l'image dans une nouvelle fenêtre
+    cv2.imshow('Mon Image OpenCV', image)   # Crée une fenêtre nommée 'Mon Image OpenCV' et y affiche l'objet 'image'
+
+    # 5. Attente d'une touche
+    cv2.waitKey(0)                          # Le programme attend que l'utilisateur appuie sur n'importe quelle touche (0 = infini)
+
+    # 6. Fermeture des fenêtres
+    cv2.destroyAllWindows()                 # Ferme toutes les fenêtres OpenCV ouvertes (important pour nettoyer la mémoire)
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref bg-indigo-50 border-indigo-400 text-indigo-800">
+                        <i class="fa-solid fa-lightbulb mr-2"></i>
+                        **Le Concept Clé (La Matrice) :**
+                        <p class="mt-2">Pour OpenCV, une image n'est qu'une immense **matrice NumPy** (un tableau de nombres). Chaque nombre représente l'intensité de couleur (Rouge, Vert, Bleu) d'un **pixel**.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
+        <section id="data-science" class="mb-20 scroll-mt-24 relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
+            <div class="flex items-center mb-8">
+                <div class="bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">11</div>
+                <h2 class="text-3xl font-bold text-slate-900">Analyse de Données : Pandas et Matplotlib</h2>
+            </div>
+
+            <div class="ml-0 md:ml-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-pink-100 p-3 rounded-full text-pink-600 mr-4">
+                            <i class="fa-solid fa-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Pandas (Tableaux) & Matplotlib (Graphiques)</h3>
+                            <p class="text-slate-600">**Pandas** est l'outil principal pour gérer des données tabulaires (comme des feuilles Excel). **Matplotlib** est utilisé pour créer des graphiques clairs à partir de ces données.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-slate-800 mb-3 flex items-center"><i class="fa-solid fa-terminal mr-2 text-pink-500"></i> Installation (dans le Terminal)</h4>
+                    <pre><code class="language-bash">pip install pandas matplotlib # Installe les deux bibliothèques nécessaires</code></pre>
+
+                    <h4 class="font-bold text-slate-800 mt-6 mb-3">Code : Créer un Graphique Simple</h4>
+                    <div class="relative group">
+                        <pre><code class="language-python">import pandas as pd                             # 1. Importe Pandas et lui donne le raccourci 'pd'
+import matplotlib.pyplot as plt                 # 2. Importe Matplotlib pour les graphiques ('pyplot' est la sous-librairie standard pour tracer)
+
+# 3. Création d'un ensemble de données (Series Pandas)
+data = {
+    'Mois': ['Jan', 'Fév', 'Mar', 'Avr'],       # Liste des mois (colonne 1)
+    'Ventes': [150, 180, 220, 190]              # Liste des ventes associées (colonne 2)
+}
+# Crée un DataFrame Pandas (une table structurée) à partir des données ci-dessus
+df = pd.DataFrame(data) 
+
+# 4. Affichage des données (optionnel)
+print("Table des ventes:")
+print(df) # Affiche le contenu du tableau dans la console
+
+# 5. Création et affichage du graphique (Matplotlib)
+plt.figure(figsize=(8, 5))                      # Définit la taille du graphique (Largeur x Hauteur)
+plt.plot(df['Mois'], df['Ventes'], marker='o', color='pink') # Trace un graphique à lignes : x=Mois, y=Ventes, avec des ronds aux points
+plt.title('Ventes Mensuelles')                  # Ajoute un titre au graphique
+plt.xlabel('Mois')                              # Étiquette l'axe des X
+plt.ylabel('Nombre de Ventes')                  # Étiquette l'axe des Y
+plt.grid(True)                                  # Ajoute une grille pour faciliter la lecture
+plt.show()                                      # Affiche la fenêtre du graphique (bloque le programme jusqu'à sa fermeture)
+</code></pre>
+                        <button onclick="copyCode(this)" class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition hover:bg-slate-600">Copier</button>
+                    </div>
+
+                    <div class="book-ref bg-pink-50 border-pink-400 text-pink-800">
+                        <i class="fa-solid fa-chart-pie mr-2"></i>
+                        **Les Concepts Clés :**
+                        <ul class="mt-2 space-y-1 ml-6 list-disc">
+                            <li><code class="language-python">pd.DataFrame</code> : L'objet central de Pandas. Pensez-y comme une feuille de calcul Excel dans Python.</li>
+                            <li><code class="language-python">df['Ventes']</code> : Syntaxe utilisée pour sélectionner une colonne spécifique par son nom dans le DataFrame.</li>
+                            <li><code class="language-python">plt.show()</code> : Commande pour rendre le graphique visible.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-slate-200 my-16">
+
         <section id="project3" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
-                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">10</div>
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">12</div>
                 <h2 class="text-3xl font-bold text-slate-900">Projet 3 : Carnet d'Adresses Simple (Console)</h2>
             </div>
 
@@ -681,20 +809,19 @@ afficher_contacts(contacts)             # Appelle la fonction d'affichage avec l
 
                     <div class="book-ref">
                         <i class="fa-solid fa-code mr-2"></i> 
-                        <strong>Concept Clé : Imbrication</strong>
+                        **Concept Clé : Imbrication**
                         <p>Imaginez que le carnet soit un tiroir (`List`). Chaque contact est un classeur (`Dictionary`) dans le tiroir. Pour trouver le nom, vous cherchez la clé "nom" dans le classeur.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <hr class="border-t-2 border-slate-200 my-16">
 
-        <!-- Section 11: Projet 4 - Tkinter Calculette de Température -->
         <section id="project4" class="mb-20 scroll-mt-24 relative">
             <div class="absolute -left-4 top-0 bottom-0 w-1 bg-slate-200 hidden md:block"></div>
             <div class="flex items-center mb-8">
-                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">11</div>
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-lg z-10">13</div>
                 <h2 class="text-3xl font-bold text-slate-900">Projet 4 : Convertisseur de Température (GUI Tkinter)</h2>
             </div>
 
@@ -770,7 +897,7 @@ root.mainloop()                                     # Démarre le moteur graphiq
 
                     <div class="book-ref">
                         <i class="fa-solid fa-code mr-2"></i> 
-                        <strong>Fonctions et Widgets :</strong>
+                        **Fonctions et Widgets :**
                         <ul class="mt-2 space-y-1 ml-6 list-disc">
                             <li><code class="language-python">tk.Tk()</code> : La classe de base pour toutes les applications Tkinter.</li>
                             <li><code class="language-python">tk.Entry()</code> : Un champ de texte pour que l'utilisateur puisse saisir des données.</li>
@@ -783,6 +910,16 @@ root.mainloop()                                     # Démarre le moteur graphiq
         
     </main>
 
+    <div class="fixed-nav">
+        <div class="max-w-5xl mx-auto flex justify-between">
+            <button id="prev-btn" onclick="navigateSection('prev')" class="nav-button bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full flex items-center shadow-lg">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Précédent
+            </button>
+            <button id="next-btn" onclick="navigateSection('next')" class="nav-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full flex items-center shadow-lg">
+                Suivant <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </div>
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <p class="mb-4">Tutoriel éducatif basé sur les ouvrages de la série "Pour les Nuls".</p>
@@ -791,9 +928,26 @@ root.mainloop()                                     # Démarre le moteur graphiq
     </footer>
 
     <script>
+        // Liste ordonnée des IDs de section pour la navigation (MISE À JOUR)
+        const sectionIds = [
+            'setup', 
+            'tools', 
+            'symbols', 
+            'logic', 
+            'structures', 
+            'flow', 
+            'tkinter', 
+            'project1', 
+            'project2', 
+            'opencv',   // NOUVEAU
+            'data-science', // NOUVEAU
+            'project3',
+            'project4'
+        ];
+        let currentSectionIndex = 0; // Index de la section actuellement visible
+
         // Fonction de copie de code 
         window.copyCode = (btn) => {
-            // Récupère le contenu du bloc <pre> parent
             const code = btn.previousElementSibling.innerText;
             const textarea = document.createElement('textarea');
             textarea.value = code;
@@ -807,14 +961,11 @@ root.mainloop()                                     # Démarre le moteur graphiq
             setTimeout(() => btn.innerText = originalText, 2000);
         }
 
-        // Fonction pour le sélecteur d'OS
+        // Fonction pour le sélecteur d'OS 
         window.selectOS = (os) => {
-            // Cacher toutes les instructions
             document.querySelectorAll('.os-instructions').forEach(el => el.classList.add('hidden'));
-            // Réinitialiser le style de tous les boutons
             document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Afficher l'instruction et activer le bouton correspondant
             if (os === 'win') {
                 document.getElementById('instructions-win').classList.remove('hidden');
                 document.getElementById('btn-win').classList.add('active');
@@ -823,10 +974,77 @@ root.mainloop()                                     # Démarre le moteur graphiq
                 document.getElementById('btn-mac').classList.add('active');
             }
         }
+        
+        // --- LOGIQUE DE NAVIGATION ---
+        
+        // Fonction pour mettre à jour l'état des boutons (activé/désactivé)
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
 
-        // Initialiser la sélection par défaut au chargement de la page (Windows par défaut)
+            // Désactive le bouton 'Précédent' si on est à la première section
+            prevBtn.disabled = currentSectionIndex <= 0;
+            // Désactive le bouton 'Suivant' si on est à la dernière section
+            nextBtn.disabled = currentSectionIndex >= sectionIds.length - 1;
+        }
+
+        // Fonction pour gérer le défilement de la page
+        window.navigateSection = (direction) => {
+            let newIndex = currentSectionIndex;
+
+            if (direction === 'next') {
+                newIndex++;
+            } else if (direction === 'prev') {
+                newIndex--;
+            }
+
+            // Vérifie si l'indice est valide
+            if (newIndex >= 0 && newIndex < sectionIds.length) {
+                currentSectionIndex = newIndex;
+                const targetId = sectionIds[currentSectionIndex];
+                
+                // Utilise scrollIntoView pour défiler à la section cible
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            updateNavButtons();
+        }
+
+        // Mise à jour de l'index au chargement et lors du scroll
+        function updateCurrentSectionFromScroll() {
+            let closestSectionIndex = 0;
+            let minDistance = Infinity;
+
+            // Parcours toutes les sections définies
+            sectionIds.forEach((id, index) => {
+                const section = document.getElementById(id);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    // Calcule la distance entre le haut de la section et une position près du haut du viewport (100px)
+                    const distance = Math.abs(rect.top - 100); 
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestSectionIndex = index;
+                    }
+                }
+            });
+
+            currentSectionIndex = closestSectionIndex;
+            updateNavButtons();
+        }
+
+
+        // Initialiser la sélection par défaut et les boutons au chargement de la page
         document.addEventListener('DOMContentLoaded', () => {
             selectOS('win'); 
+            // Démarre à la première section (index 0)
+            currentSectionIndex = 0; 
+            updateNavButtons();
+            
+            // Écoute l'événement de défilement pour mettre à jour l'état des boutons
+            window.addEventListener('scroll', updateCurrentSectionFromScroll);
+            updateCurrentSectionFromScroll(); // Initialiser dès le départ au cas où la page est déjà scrollée
         });
     </script>
 </body>
