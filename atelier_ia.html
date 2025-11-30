@@ -223,7 +223,7 @@
 
             if (mode === 'ideas') {
                 const interest = document.getElementById('interestInput').value || "général";
-                prompt = `Suggère une idée de petit projet Python (moins de 50 lignes) pour un débutant intéressé par : ${interest}. Décris le but et donne les grandes étapes du code.`;
+                prompt = `Suggère une idée de petit projet Python pour un débutant intéressé par : ${interest}. Décris le but et donne les grandes étapes du code. Donne un code final avec des commentaires a chaque ligne à la fin.`;
             } 
             else if (mode === 'explainer') {
                 const code = document.getElementById('codeToExplain').value;
