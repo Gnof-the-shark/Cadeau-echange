@@ -1,16 +1,12 @@
 {
   "name": "gemini-vercel-proxy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",  <-- AJOUTEZ CECI
+  "description": "Proxy Vercel sécurisé pour l'API Gemini",
+  "type": "module", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo 'Deployez sur Vercel' && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@google/genai": "^0.15.0"
+    "@google/genai": "latest" 
   }
 }
