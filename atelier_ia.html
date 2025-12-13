@@ -23,6 +23,7 @@
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
         @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
         /* Pour le code dans la réponse de l'IA */
+        /* Note: Tailwind CSS n'a pas de 'prose' noir par défaut, cette règle CSS est maintenue */
         .prose pre { background-color: #000; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-top: 0.5rem; margin-bottom: 0.5rem; }
     </style>
 </head>
@@ -61,7 +62,7 @@
                     <p class="text-slate-300 max-w-xl mx-auto mb-6">Utilisez l'intelligence artificielle pour aller plus loin. Choisissez un outil ci-dessous, ou accédez directement au guide IA sur la plateforme Gemini.</p>
                     
                     <a href="https://gemini.google.com/gem/1hj3UptOtZScqiAvJt8qml2uAJHpVkL2e?usp=sharing" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm shadow-md transition duration-300">
-                        <i class="fa-solid fa-star mr-2"></i> Pour une aide IA plus apronfondie avec Gemini
+                        <i class="fa-solid fa-star mr-2"></i> Pour une aide IA plus approfondie avec Gemini
                     </a>
                     </div>
 
@@ -166,8 +167,9 @@
     </footer>
 
     <script type="module">
-        // Clé API (Doit être vide pour que l'environnement l'injecte)
-        const apiKey = "AIzaSyDr2fQhSopHFutjzZWdUTn8_5FO9fzEz3E";
+        // *** MODIFICATION IMPORTANTE : UTILISATION DU PROXY VERCEL ***
+        // L'URL relative pointe vers la fonction api/gemini-chat.js déployée sur Vercel
+        const PROXY_URL = '/api/gemini-chat'; 
         
         const outputDiv = document.getElementById('ai-output');
         const resultContainer = document.getElementById('ai-result-container');
@@ -196,16 +198,17 @@
             for (let i = 0; i < maxRetries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    // Si l'environnement Canvas injecte l'API Key, response.ok peut être true même si le contenu JSON est une erreur.
-                    // On ne lève pas d'erreur HTTP ici pour laisser le JSON parsing gérer les messages d'erreur de l'API.
+                    // Si la réponse n'est pas OK (ex: 500 erreur du proxy), on la traite comme une erreur
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || `Erreur HTTP ${response.status} de Vercel Proxy.`);
+                    }
                     return await response.json();
                 } catch (error) {
                     if (i < maxRetries - 1) {
                         const delay = Math.pow(2, i) * 1000;
-                        // On n'affiche pas les logs de retries
                         await new Promise(resolve => setTimeout(resolve, delay));
                     } else {
-                        // On jette l'erreur après le dernier essai
                         throw error;
                     }
                 }
@@ -224,7 +227,7 @@
             if (mode === 'ideas') {
                 const interest = document.getElementById('interestInput').value || "général";
                 prompt = `Suggère une idée de petit projet Python (moins de 50 lignes) pour un débutant intéressé par : ${interest}. Décris le but et donne les grandes étapes du code.`;
-            } 
+            } 
             else if (mode === 'explainer') {
                 const code = document.getElementById('codeToExplain').value;
                 if (!code) {
@@ -243,7 +246,7 @@
                     loader.classList.add('hidden');
                     return;
                 }
-                prompt = `Voici un code Python qui semble contenir des erreurs. 
+                prompt = `Voici un code Python qui semble contenir des erreurs. 
                 1. Identifie les erreurs (syntaxe ou logique).
                 2. Explique pourquoi ça ne marche pas simplement.
                 3. Donne la version corrigée du code.
@@ -252,7 +255,7 @@
                 \n\n${code}`;
             }
             else if (mode === 'quiz') {
-                prompt = `Génère une question à choix multiple (QCM) sur les bases de Python (variables, boucles, conditions). 
+                prompt = `Génère une question à choix multiple (QCM) sur les bases de Python (variables, boucles, conditions). 
                 Format attendu:
                 **Question** : [La question]
                 
@@ -268,18 +271,19 @@
             }
 
             try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                
-                const data = await fetchWithRetry(apiUrl, {
+                // *** APPEL AU PROXY VERCEL SECURISÉ ***
+                const data = await fetchWithRetry(PROXY_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: prompt }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                        // Envoie les données au proxy Vercel
+                        prompt: prompt,
+                        systemInstruction: systemPrompt
                     })
                 });
 
-                const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                // Le proxy renvoie le texte de l'IA sous la clé 'result'
+                const rawText = data?.result; 
 
                 if (!rawText) {
                     throw new Error("Réponse de l'IA invalide ou vide.");
@@ -320,7 +324,7 @@
 
             } catch (error) {
                 console.error("Erreur lors de l'appel à l'API Gemini:", error);
-                outputDiv.innerHTML = "<span class='text-red-400'>Oups, une erreur est survenue avec l'IA. Assurez-vous d'avoir saisi votre texte ou réessayez plus tard.</span>";
+                outputDiv.innerHTML = `<span class='text-red-400'>Oups, une erreur est survenue avec l'IA. Cause : ${error.message}. Vérifiez la clé API sur Vercel.</span>`;
                 resultContainer.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
