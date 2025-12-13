@@ -65,7 +65,8 @@
                     </a>
                     </div>
 
-                <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                <!-- DÉBUT DE LA MODIFICATION: Grille 2x2 sur les écrans moyens et grands -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                     
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition cursor-pointer ai-card group" onclick="activateTool('explainer')">
                         <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
@@ -87,7 +88,7 @@
                         <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-puzzle-piece text-green-400 text-xl"></i>
                         </div>
-                        <h3 class="font-bold text-lg mb-2">Quiz Express ✨</h3>
+                        <h3 class="font-bold text-lg mb-2">Quiz Express ✨ </h3>
                         <p class="text-sm text-slate-400">Testez vos connaissances immédiatement avec une question générée par l'IA.</p>
                     </div>
 
@@ -99,6 +100,7 @@
                         <p class="text-sm text-slate-400">Votre code ne marche pas ? Collez-le ici, l'IA va trouver l'erreur et vous donner la solution.</p>
                     </div>
                 </div>
+                <!-- FIN DE LA MODIFICATION -->
 
                 <div id="tool-interface" class="mt-8 bg-slate-800/50 rounded-2xl border border-white/10 p-6 hidden">
                     
@@ -166,8 +168,10 @@
     </footer>
 
     <script type="module">
-        // URL du point de terminaison Netlify (fonction proxy)
-        const NETLIFY_FUNCTION_URL = '/.netlify/functions/gemini-proxy';
+        // URL de l'API Gemini (Utilisé directement car le proxy Netlify n'est pas disponible dans cet environnement)
+        const MODEL_NAME = 'gemini-2.5-flash-preview-09-2025';
+        const apiKey = "";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${apiKey}`;
         
         const outputDiv = document.getElementById('ai-output');
         const resultContainer = document.getElementById('ai-result-container');
@@ -196,10 +200,11 @@
             for (let i = 0; i < maxRetries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    // Si la fonction Netlify renvoie un code d'erreur HTTP, on le lève ici.
                     if (!response.ok) {
                         const errorData = await response.json();
-                        throw new Error(errorData.error || `Erreur HTTP ${response.status} de la fonction Netlify.`);
+                        // Afficher l'erreur de l'API directement si disponible
+                        const apiError = errorData.error?.message || `Erreur HTTP ${response.status}`;
+                        throw new Error(`Erreur API Gemini: ${apiError}`);
                     }
                     return await response.json();
                 } catch (error) {
@@ -223,10 +228,12 @@
             // Le System Prompt pour guider le modèle à agir comme un professeur bienveillant
             const systemPrompt = "Tu es un professeur de Python bienveillant pour débutants. Réponds en français avec un formatage Markdown clair. Sois concis mais très pédagogique. Utilise des analogies simples.";
 
+            let userQuery = "";
             let input = {};
 
             if (mode === 'ideas') {
                 input.interest = document.getElementById('interestInput').value;
+                userQuery = `Génère une idée de projet Python pour débutant basé sur ce centre d'intérêt : "${input.interest}". Donne la description, les fonctionnalités clés et une suggestion de module Python à utiliser.`;
             } 
             else if (mode === 'explainer') {
                 input.code = document.getElementById('codeToExplain').value;
@@ -236,6 +243,7 @@
                     loader.classList.add('hidden');
                     return;
                 }
+                userQuery = `Explique ce code Python ligne par ligne : \n\n\`\`\`python\n${input.code}\n\`\`\``;
             }
             else if (mode === 'corrector') {
                 input.code = document.getElementById('codeToCorrect').value;
@@ -245,25 +253,33 @@
                     loader.classList.add('hidden');
                     return;
                 }
+                userQuery = `Ce code Python contient un bug. Trouve l'erreur, explique pourquoi c'est une erreur, et propose le code corrigé :\n\n\`\`\`python\n${input.code}\n\`\`\``;
             }
-            // Note: Le mode 'quiz' n'a pas besoin d'input spécifique.
+            else if (mode === 'quiz') {
+                userQuery = "Génère une seule question de Quiz à choix multiples sur les bases de la programmation Python pour débutants (variables, boucles, conditions). Inclue la réponse dans un bloc masqué `details` et `summary` en Markdown à la fin de la réponse.";
+            }
+
+            // 2. Création du payload pour l'API Gemini
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
             
             try {
-                // 1. Appel du proxy Netlify (pas l'API Gemini directe)
-                const responseData = await fetchWithRetry(NETLIFY_FUNCTION_URL, {
+                // 3. Appel à l'API Gemini (avec backoff)
+                const responseData = await fetchWithRetry(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        mode, // Passer le mode pour que le proxy construise le prompt
-                        input, // Passer les données de l'utilisateur (code, intérêt)
-                        systemPrompt // Passer le systemPrompt pour le style
-                    })
+                    body: JSON.stringify(payload)
                 });
 
-                const rawText = responseData.text; // Réponse du proxy contient l'objet { text: '...' }
+                const rawText = responseData.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 if (!rawText) {
-                    throw new Error("Réponse de l'IA invalide ou vide.");
+                    const message = responseData.candidates?.[0]?.finishReason === 'SAFETY' 
+                        ? "La requête a été bloquée par le filtre de sécurité."
+                        : "Réponse de l'IA invalide ou vide.";
+                    throw new Error(message);
                 }
 
                 // Amélioration du parsing Markdown:
@@ -286,10 +302,20 @@
                     })
                     // Styles pour le gras et les listes (si l'IA utilise * ou -)
                     .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-300">$1</strong>')
-                    .replace(/^- (.*?)<br>/gm, '<li>$1</li>');
+                    .replace(/^- (.*?)<br>/gm, '<li class="ml-4 list-disc">$1</li>'); // Utilise list-disc et ml-4 pour l'indentation
+                
+                // Remplacer les balises ul/ol générées par l'IA par des balises div stylisées (pour éviter les problèmes d'imbrication de listes avec le remplacement <br>)
+                formattedText = formattedText.replace(/<ul>/g, '<div class="list-container mt-2">');
+                formattedText = formattedText.replace(/<\/ul>/g, '</div>');
+                formattedText = formattedText.replace(/<ol>/g, '<div class="list-container mt-2">');
+                formattedText = formattedText.replace(/<\/ol>/g, '</div>');
+                formattedText = formattedText.replace(/<li>/g, '<div class="list-item flex items-start mb-1">');
+                formattedText = formattedText.replace(/<\/li>/g, '</div>');
 
+                // Correction pour l'indentation des listes à puces (si non capturées par le regex - (.*?)<br>)
+                formattedText = formattedText.replace(/•(.*?)(<br>)/g, '<li class="ml-4 list-disc">$1</li>');
 
-                // Fix pour details/summary HTML injection si retourné par l'IA
+                // Fix pour details/summary HTML injection si retourné par l'IA
                 if (mode === 'quiz') {
                     // Re-apply specific styling for details/summary
                     formattedText = formattedText.replace(/<details><br>/g, '<details class="mt-4 bg-white/5 p-4 rounded-lg cursor-pointer">');
@@ -300,10 +326,10 @@
                 resultContainer.classList.remove('hidden');
 
             } catch (error) {
-                console.error("Erreur lors de l'appel au proxy Netlify:", error);
-                const errorMessage = error.message.includes('fonction Netlify') || error.message.includes('API Gemini') 
+                console.error("Erreur lors de l'appel à l'API Gemini:", error);
+                const errorMessage = error.message.includes('API Gemini') 
                     ? error.message 
-                    : "Oups, une erreur de connexion est survenue. Vérifiez la console pour plus de détails.";
+                    : `Oups, une erreur est survenue avec l'IA. Assurez-vous d'avoir saisi votre texte ou réessayez plus tard. (Détails: ${error.message})`;
 
                 outputDiv.innerHTML = `<span class='text-red-400'>${errorMessage}</span>`;
                 resultContainer.classList.remove('hidden');
