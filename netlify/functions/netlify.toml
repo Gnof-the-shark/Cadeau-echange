@@ -1,0 +1,15 @@
+[build]
+
+Dossier de publication (si votre index.html est à la racine)
+
+publish = "."
+
+[functions]
+
+Dossier où se trouvent les fichiers JavaScript des fonctions
+
+directory = "netlify/functions"
+
+Langage utilisé (défaut: Node.js)
+
+node_bundler = "esbuild"
