@@ -29,15 +29,16 @@ export default async (req, res) => {
             return;
         }
 
-        // 2. Préparation des instructions pour Gemini
-        const instructionPart = systemInstruction ? { parts: [{ text: systemInstruction }] } : undefined;
+        // 2. Préparation des instructions pour Gemini (MISES À JOUR)
+        // Le SDK attend une chaîne de caractères directement, pas un objet Content
+        const systemInstructionString = systemInstruction ? systemInstruction : undefined;
         
         // 3. Appel sécurisé à l'API Gemini
         const response = await ai.models.generateContent({
             model: MODEL_NAME,
             contents: [{ role: 'user', parts: [{ text: prompt }] }],
             // L'instruction système est envoyée dans la requête
-            config: { systemInstruction: instructionPart } 
+            config: { systemInstruction: systemInstructionString } // Changement ici
         });
 
         // 4. Renvoie la réponse de l'IA à votre site web.
@@ -49,9 +50,11 @@ export default async (req, res) => {
         
     } catch (error) {
         console.error('Erreur Gemini:', error);
+        // Loggez l'erreur pour pouvoir la débugger dans Vercel
         res.status(500).send({ 
             success: false, 
-            error: 'Erreur interne du proxy. Vérifiez les logs Vercel.' 
+            // On peut être plus précis sur l'erreur interne
+            error: 'Erreur interne du proxy. Détail: ' + error.message || 'Vérifiez les logs Vercel.' 
         });
     }
 };
